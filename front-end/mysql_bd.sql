@@ -20,7 +20,8 @@ CREATE TABLE Messages (
 );
 
 
-/*
+/*   draft 
+    
 TABLE "f_categories":
 
     id => int(11)

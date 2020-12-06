@@ -88,24 +88,20 @@
       <div class="container">
               <!-- ======= ACTION TO A PHP THAT POST IN DB ======= -->
 
-        <form action="creer_sujet.php" method="POST" role="form" class="php-email-form">
+        <form action="../views/ajouter_question.php" method="POST" role="form" class="php-email-form">
           <div class="form-row">
             <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="text" name="sujet_question" class="form-control" id="sujet_question" placeholder="Votre sujet" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <input type="id_patient" class="form-control" name="id_patient" id="email" placeholder="Votre ID" data-msg="Please enter a valid ID">
               <div class="validate"></div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 form-group">
-                <input type="text" class="form-control" name="sujet" id="sujet" placeholder="Votre sujet" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                <div class="validate"></div>
-              </div>
-            <div class="col-md-4 form-group">
-              <select name="department" id="department" class="form-control">
+              <select name="categorie_question" id="categorie_question" class="form-control">
                 <option value="">Select Categorie</option>
                 <option value="Department 1">Depression</option>
                 <option value="Department 2">Maladie mentale</option>
@@ -115,7 +111,7 @@
             </div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+            <textarea class="form-control" name="message_question" id="message_question" rows="5" placeholder="Message (Optional)"></textarea>
             <div class="validate"></div>
           </div>
           <div class="mb-3">

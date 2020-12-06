@@ -30,7 +30,7 @@
 			return $this->id_patient;
 		}
 
-		function setNom(string $sujet_questionom): void{
+		function setNom(string $sujet_question): void{
 			$this->sujet_question=$sujet_question;
 		}
 		function setmessage_question(string $message_question): void{

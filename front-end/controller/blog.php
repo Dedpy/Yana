@@ -5,8 +5,8 @@
 	class blog {
 		
 		function ajouterquestion($question){
-			$sql="INSERT INTO questions (sujet_question,message_question,date_question,categorie_question,id_patient) 
-			VALUES (:sujet_question,:message_question, :date_question,:categorie_question, :id_patient)";
+			$sql="INSERT INTO questions (sujet_question,message_question,categorie_question,id_patient) 
+			VALUES (:sujet_question,:message_question,:categorie_question, :id_patient)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
@@ -15,7 +15,6 @@
 					'sujet_question' => $question->getsujet_question(),
 					'message_question' => $question->getmessage_question(),
 					'categorie_question' => $question->getcategorie_question(),
-					'date_question' => $question->getdate_question(),
 					'id_patient' => $question->getid_patient()
 				]);			
 			}
@@ -57,7 +56,6 @@
 						sujet_question = :sujet_question, 
 						message_question = :message_question,
 						categorie_question = :categorie_question,
-						date_question = :date_question,
 						id_patient = :id_patient
 					WHERE id = :id'
 				);
@@ -65,7 +63,6 @@
 					'sujet_question' => $question->getsujet_question(),
 					'message_question' => $question->getmessage_question(),
 					'categorie_question' => $question->getcategorie_question(),
-					'date_question' => $question->getdate_question(),
 					'id_patient' => $question->getid_patient(),
 					'id' => $id
 				]);

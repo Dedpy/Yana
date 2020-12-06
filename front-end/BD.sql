@@ -154,6 +154,8 @@ CREATE TABLE IF NOT EXISTS `reponses` (
   KEY `FK_R_id_patient` (`id_patient`),
   KEY `FK_R_id_question` (`id_question`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+ALTER TABLE `questions` CHANGE `date_question` `date_question` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP; 
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

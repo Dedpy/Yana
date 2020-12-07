@@ -1,5 +1,5 @@
 <?PHP
-	class Utilisateur{
+	class patient{
 		private  $id = null;
 		private  $nom = null;
 		private  $prenom = null;
@@ -9,7 +9,7 @@
 		private  $login = null;
 		private  $password = null;
 		
-		function __construct(string $nom, string $prenom, string $date_naissance, int $telephone , string $email, string $login, string $password){
+		function __construct(string $nom, string $prenom, date $date_naissance, int $telephone , string $email, string $login, string $password){
 			
 			$this->nom=$nom;
 			$this->prenom=$prenom;
@@ -29,7 +29,7 @@
 		function getPrenom(): string{
 			return $this->prenom;
 		}
-		function getDateNaissance(): string{
+		function getDateNaissance(): date{
 			return $this->date_naissance;
 		}
 		function getTelephone(): int{

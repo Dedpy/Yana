@@ -1,8 +1,8 @@
 <?PHP
 	include "../config.php";
-	require_once '../Model/Utilisateur.php';
+	require_once '../Model/patient.php';
 
-	class UtilisateurC {
+	class patientC {
 		
 		function ajouterPatient($patient){
 			$sql="INSERT INTO patient (nom, prenom, date_naissance, telephone, email, login, password) 

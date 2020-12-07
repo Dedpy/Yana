@@ -123,8 +123,6 @@
 											foreach ($min as $val1) {
 											$min1=$val1['min_post'];
 											}
-
-
 											foreach ($result as $val) {?>
 								<h3><a href="#"><?php echo $val['categorie'];?></a></h3>
 								<div class="blog-info">

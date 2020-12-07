@@ -50,7 +50,7 @@
 			$this->nom=$nom;
 		}
 		function setPrenom(string $prenom): void{
-			$this->prenom;
+			$this->prenom=$prenom;
 		}
 		function setDateNaissance(date $date_naissance): void{
 			 $this->date_naissance=$date_naissance;

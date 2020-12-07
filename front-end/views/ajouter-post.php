@@ -1,5 +1,5 @@
 <?php
-include '../core/ForumM.php';
+include '../controller/ForumM.php';
 
 $image="img/blog/general.png";
 if ($_POST['categorie']=="General")

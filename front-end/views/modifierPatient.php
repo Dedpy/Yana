@@ -1,8 +1,8 @@
 <?php
-    include "../controller/UtilisateurC.php";
-    include_once '../Model/Utilisateur.php';
+    include "../controller/patientC.php";
+    include_once '../Model/patient.php';
 
-	$utilisateurC = new UtilisateurC();
+	$patientC = new patientC();
 	$error = "";
 
 	if (
@@ -23,7 +23,7 @@
             !empty($_POST["login"]) && 
             !empty($_POST["password"])
         ) {
-            $user = new Utilisateur(
+            $user = new patient(
                 $_POST['nom'],
                 $_POST['prenom'], 
                 $_POST['date_naissance'],
@@ -33,7 +33,7 @@
                 $_POST['password']
             );
             
-            $utilisateurC->modifierPatient($user, $_GET['id']);
+            $patientC->modifierPatient($user, $_GET['id']);
            header('refresh:5;url=afficherPatient.php');
         }
         else
@@ -60,7 +60,7 @@
 		
 		<?php
 			if (isset($_GET['id'])){
-				$user = $utilisateurC->recupererPatient1($_GET['id']);
+				$user = $patientC->recupererPatient1($_GET['id']);
 				
 		?>
 		<div id="layoutAuthentication">
@@ -98,7 +98,7 @@
                                                     <label class="small mb-1" for="date_naissance">date de naissance:</label>
                                                 </td>
                                                 <td>
-                                                    <input  class="form-control" type="text" name="date_naissance" id="date_naissance" maxlength="20" value = "<?php echo $user->date_naissance; ?>">
+                                                    <input  class="form-control" type="date" name="date_naissance" id="date_naissance" maxlength="20" value = "<?php echo $user->date_naissance; ?>">
                                                 </td>
                                             </tr>
 

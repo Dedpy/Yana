@@ -231,7 +231,6 @@
                 </div>                         
             </div>
         </div>
-<<<<<<< HEAD
 <!-- ======= Footer ======= -->
 <footer id="footer">
 <div class="footer-top">

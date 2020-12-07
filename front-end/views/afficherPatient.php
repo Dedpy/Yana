@@ -1,8 +1,8 @@
 <?PHP
-	include "../controller/UtilisateurC.php";
+	include "../controller/patientC.php";
 
-	$utilisateurC=new UtilisateurC();
-	$listeUsers=$utilisateurC->afficherPatient();
+	$patientC=new patientC();
+	$listeUsers=$patientC->afficherPatient();
 ?>
 
 <html>

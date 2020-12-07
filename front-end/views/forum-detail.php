@@ -71,7 +71,7 @@
             <li class="active"><a href="../index.html">Home</a></li>
             <li><a href="developement_p.html">Development Personelle</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="forum.php.html">Blog</a></li>
+            <li><a href="forum.php">Blog</a></li>
             <li><a href="#doctors">Doctors</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -300,7 +300,7 @@
 		<li><i class="bx bx-chevron-right"></i> <a href="../index.html">Home</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="developement_p.html">Development Personelle</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
-		<li><i class="bx bx-chevron-right"></i> <a href="forum.php.html">Blog</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="forum.php">Blog</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="#doctors">Doctors</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
 	  </ul>

@@ -1,5 +1,5 @@
 <?php
-include '../core/ForumM.php';
+include '../controller/ForumM.php';
 
 
 

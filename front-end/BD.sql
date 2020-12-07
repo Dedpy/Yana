@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 07, 2020 at 08:59 AM
+-- Generation Time: Dec 07, 2020 at 11:18 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -30,9 +30,10 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `administrateur`;
 CREATE TABLE IF NOT EXISTS `administrateur` (
-  `login` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  PRIMARY KEY (`login`)
+  `id_ad` int(11) NOT NULL AUTO_INCREMENT,
+  `login_ad` varchar(250) NOT NULL,
+  `password_ad` varchar(250) NOT NULL,
+  PRIMARY KEY (`id_ad`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -57,25 +58,6 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctor`
---
-
-DROP TABLE IF EXISTS `doctor`;
-CREATE TABLE IF NOT EXISTS `doctor` (
-  `id_doctor` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_doctor` varchar(250) NOT NULL,
-  `prenom_doctor` varchar(250) NOT NULL,
-  `tel_doctor` int(11) NOT NULL,
-  `email_doctor` varchar(250) NOT NULL,
-  `login_doctor` varchar(250) NOT NULL,
-  `password_doctor` varchar(250) NOT NULL,
-  `diplome_doctor` varchar(250) NOT NULL,
-  PRIMARY KEY (`id_doctor`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `hitorique_consultation`
 --
 
@@ -91,19 +73,38 @@ CREATE TABLE IF NOT EXISTS `hitorique_consultation` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `medecin`
+--
+
+DROP TABLE IF EXISTS `medecin`;
+CREATE TABLE IF NOT EXISTS `medecin` (
+  `id_med` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_med` varchar(250) NOT NULL,
+  `prenom_med` varchar(250) NOT NULL,
+  `email_med` varchar(250) NOT NULL,
+  `diplome` varchar(250) NOT NULL,
+  `adresse` varchar(250) NOT NULL,
+  `login_med` varchar(250) NOT NULL,
+  `password_med` varchar(250) NOT NULL,
+  PRIMARY KEY (`id_med`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patient`
 --
 
 DROP TABLE IF EXISTS `patient`;
 CREATE TABLE IF NOT EXISTS `patient` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_patient` varchar(250) NOT NULL,
-  `prenom_patient` varchar(250) NOT NULL,
-  `tel_patient` int(11) NOT NULL,
-  `email_patient` varchar(250) NOT NULL,
-  `login_patient` varchar(250) NOT NULL,
-  `password_patient` varchar(250) NOT NULL,
-  `datenaissance_patient` date NOT NULL,
+  `nom` varchar(250) NOT NULL,
+  `prenom` varchar(250) NOT NULL,
+  `date_naissance` date NOT NULL,
+  `telephone` int(11) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `login` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -115,15 +116,23 @@ CREATE TABLE IF NOT EXISTS `patient` (
 
 DROP TABLE IF EXISTS `post`;
 CREATE TABLE IF NOT EXISTS `post` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) NOT NULL,
   `categorie` varchar(100) NOT NULL,
   `post` longtext NOT NULL,
   `image` varchar(100) NOT NULL,
   `date_post` datetime NOT NULL,
   `id_patient` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `FK_commentaire` (`id_patient`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `titre`, `categorie`, `post`, `image`, `date_post`, `id_patient`) VALUES
+(1, 'la depression ma detruit', 'Depression', 'je suis un etudiant a esprit\r\ncordialement', 'img/blog/general.png', '2020-12-08 00:16:50', 1);
 
 -- --------------------------------------------------------
 

@@ -1,52 +1,83 @@
-<!doctype html>
-<?php include('header.php'); ?>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Mimosa-Responsive eCommerce Template</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Favicon -->
-		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-		<!-- all css here -->
-		<!-- bootstrap v3.3.6 css -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-		<!-- animate css -->
-        <link rel="stylesheet" href="css/animate.css">
-		<!-- jquery-ui.min css -->
-        <link rel="stylesheet" href="css/jquery-ui.min.css">
-		<!-- meanmenu css -->
-        <link rel="stylesheet" href="css/meanmenu.min.css">
-		<!-- owl.carousel css -->
-        <link rel="stylesheet" href="css/owl.carousel.css">
-		<!-- font-awesome css -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-		<!-- ionicons.min css -->
-        <link rel="stylesheet" href="css/ionicons.min.css">
-		<!-- nivo-slider.css -->
-        <link rel="stylesheet" href="css/nivo-slider.css">
-		<!-- style css -->
-		<link rel="stylesheet" href="style.css">
-		<!-- responsive css -->
-        <link rel="stylesheet" href="css/responsive.css">
-		<!-- modernizr css -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body class="blog">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  <title>YANA</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
 
-        <!-- Add your site or application content here -->
-		<!-- page-wraper-start -->
-		<div id="page-wraper">
-			<!-- header-area-start -->
-			<header>
-				
-			</header>
+  <!-- Favicons -->
+  <link href="../assets/img/logo.png" rel="icon">
+  <link href="../assets/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Medilab - v2.0.0
+  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">yana.tn@esprit.tn</a>
+        <i class="icofont-phone"></i> +216 94 366 666
+        <i class="icofont-google-map"></i> tunis , araiana essoghra technopole ghazela
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="index.html">YANA</h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+            <li class="active"><a href="../index.html">Home</a></li>
+            <li><a href="developement_p.html">Development Personelle</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="blog_all.html">Blog</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
 			<!-- header-area-end -->
 			<!-- breadcrumbs-area-start -->
 			<div class="breadcrumbs-area">
@@ -68,8 +99,8 @@
 			<!-- shop-main-area-start -->
 			<div class="shop-main-area">
 				<!-- cart-main-area-start -->
-				<?php include_once '../core/ForumM.php';
-											$rec=new ForumManage();
+				<?php include_once '../controller/ForumM.php';
+						$rec=new ForumManage();
 							    			$result=$rec->recupererPost($_GET['id']); ?>
 				<div class="cart-main-area">
 					<div class="container">
@@ -83,8 +114,8 @@
 										<div class="col-lg-12">
 												<div class="checkout-form-list">
 													<input type="text"  name="titre"  value="<?php echo $row['titre']; ?>" placeholder="Titre" />
-													<input name="id_client"  type="hidden" value="<?php echo $_SESSION['id']; ?>" />
-													<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
+													<input name="id_client"  type="hidden" value="1" />
+													<input name="id_post"  type="hidden" value="1" />
 											</div>
 										</div>
 										
@@ -126,79 +157,88 @@
 			</div>
 				
 			</div>
-			<!-- shop-main-area-end -->
-			<!-- newslatter-area-start -->
-			<?php  include 'newsletter.php'; ?>
-			<!-- newslatter-area-end -->
-			<!-- footer-area-start -->
-			<footer>
-				<div class="footer-area ptb-40">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-								<!-- footer-logo-start -->
-								<div class="footer-logo mb-3">
-									<a href="#"><img src="img/logo/2.png" alt="logo" /></a>
-								</div>
-								<!-- footer-logo-end -->
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-								<!-- copy-right-area-start -->
-								<div class="copy-right-area mb-3 text-center">
-									<p>Copyright © 2018 <a href="#">Hastech</a> . All Right Reserved</p>
-								</div>
-								<!-- copy-right-area-end -->
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-								<!-- footer-social-icon-start -->
-								<div class="footer-social-icon">
-									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-rss"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-								<!-- footer-social-icon-end -->
-							</div>
-						</div>
-					</div>
-				</div>
-		   </footer>
-			<!-- footer-area-end -->
-	   </div>
-	  <!-- page-wraper-start -->
-	  
-	  
-		<!-- all js here -->
-		<!-- jquery latest version -->
-        <script src="js/vendor/jquery-1.12.0.min.js"></script>
-		<!-- bootstrap js -->
-        <script src="js/bootstrap.min.js"></script>
-		<!-- owl.carousel js -->
-        <script src="js/owl.carousel.min.js"></script>
-		<!-- meanmenu js -->
-        <script src="js/jquery.meanmenu.js"></script>
-		<!-- jquery-ui js -->
-        <script src="js/jquery-ui.min.js"></script>
-		<!-- wow js -->
-        <script src="js/wow.min.js"></script>
-		<!-- owl.carousel.min.js -->
-        <script src="js/owl.carousel.min.js"></script>
-		<!-- jquery.nivo.slider.js -->
-        <script src="js/jquery.nivo.slider.js"></script>
-		<!-- jquery.elevateZoom-3.0.8.min.js -->
-        <script src="js/jquery.elevateZoom-3.0.8.min.js"></script>
-		<!-- jquery.parallax-1.1.3.js -->
-        <script src="js/jquery.parallax-1.1.3.js"></script>
-		<!-- jquery.counterup.min.js -->
-        <script src="js/jquery.counterup.min.js"></script>
-		<!-- waypoints.min.js -->
-        <script src="js/waypoints.min.js"></script>
-		<!-- plugins js -->
-        <script src="js/plugins.js"></script>
-		<!-- main js -->
-        <script src="js/main.js"></script>
-    </body>
+			<!-- ======= Footer ======= -->
+			<footer id="footer">
+
+<div class="footer-top">
+  <div class="container">
+	<div class="row">
+
+	  <div class="col-lg-3 col-md-6 footer-contact">
+		<h3>YANA</h3>
+		<p>
+		  ESPRIT <br>
+		  Ariana sghira, 2080<br>
+		  Tunisia <br><br>
+		  <strong>Phone:</strong> +216 94 366 666<br>
+		  <strong>Email:</strong> yana.tn@esprit.tn<br>
+		</p>
+	  </div>
+
+	  <div class="col-lg-2 col-md-6 footer-links">
+		<h4>Useful Links</h4>
+		<ul>
+		<li><i class="bx bx-chevron-right"></i> <a href="../index.html">Home</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="developement_p.html">Development Personelle</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="blog_all.html">Blog</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="#doctors">Doctors</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
+	  </ul>
+	  </div>
+
+	  <div class="col-lg-4 col-md-6 footer-newsletter">
+		<h4>Join Our Newsletter</h4>
+		<p>Pour recevoir toutes les noveautes medicales</p>
+		<form action="" method="post">
+		  <input type="email" name="email"><input type="submit" value="Subscribe">
+		</form>
+	  </div>
+
+	</div>
+  </div>
+</div>
+
+<div class="container d-md-flex py-4">
+
+  <div class="mr-md-auto text-center text-md-left">
+	<div class="copyright">
+	  &copy; Copyright <strong><span>YANA</span></strong>. All Rights Reserved
+	</div>
+	<div class="credits">
+	  <!-- All the links in the footer should remain intact. -->
+	  <!-- You can delete the links only if you purchased the pro version. -->
+	  <!-- Licensing information: https://bootstrapmade.com/license/ -->
+	  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+	</div>
+  </div>
+  <div class="social-links text-center text-md-right pt-3 pt-md-0">
+	<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+	<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+	<a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+	<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+	<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+  </div>
+</div>
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../assets/vendor/php-email-form/validate.js"></script>
+<script src="../assets/vendor/venobox/venobox.min.js"></script>
+<script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+<script src="../assets/vendor/counterup/counterup.min.js"></script>
+<script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../assets/js/main.js"></script>
+
+</body>
+
 </html>

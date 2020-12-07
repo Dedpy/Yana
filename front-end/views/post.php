@@ -119,11 +119,9 @@
 												
 												<select name="categorie" class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
 													<option >Selectioner Une Categorie</option>
-													<option value="Generale">Generale</option>
-													<option value="Actualites">Actualités</option>
-													<option value="Aide">Aide</option>
-													<option value="Feedback">Feedback</option>
-													<option value="Questions">Questions</option>
+													<option value="Depression">Depression</option>
+													<option value="Maladie mentale">Maladie mentale</option>
+													<option value="Developement personnel">Developement personnel</option>
 
 												</select>
 											</div>

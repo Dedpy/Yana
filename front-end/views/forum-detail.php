@@ -71,30 +71,21 @@
             <li class="active"><a href="../index.html">Home</a></li>
             <li><a href="developement_p.html">Development Personelle</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="blog_all.html">Blog</a></li>
+            <li><a href="forum.php.html">Blog</a></li>
             <li><a href="#doctors">Doctors</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
-			<!-- breadcrumbs-area-start -->
-			<div class="breadcrumbs-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="breadcrumb-content text-center">
-								<h2>blog details</h2>
-								<ul>
-									<li><a href="#">Home /</a></li>
-									<li class="active"><a href="#">blog details</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- breadcrumbs-area-end -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1>FORUM YANA </h1>
+      <h2>Espace de discussion publique pour toute questions</h2>
+      <a href="post.php" class="btn-get-started scrollto">Poser une questions</a>
+    </div>
+  </section><!-- End Hero -->
+  <section></section>  <section></section>
 			<!-- shop-main-area-start -->
 			<div class="shop-main-area">
 				<div class="container">
@@ -114,9 +105,9 @@
 							    			$min=$post->minPost();
 											$coment=$post->recupererCommentaire($_GET['id']);
 											$number_of_rows = $coment->rowCount(); 
-											foreach ($cli as $val1) {
+											/*foreach ($cli as $val1) {
 											$nom=$val1['nom'];
-											}
+											}*///pour afficher l'utilisateur 
 											foreach ($max as $val1) {
 											$max1=$val1['max_post'];
 											}
@@ -159,7 +150,6 @@
 								<!-- comments-area-start -->
 								<div class="comments-area mt-40">
 									
-									<h3><?php echo $number_of_rows; ?>  comments on <span><?php echo $val['titre'];?></span></h3>
 									
 									<?php 
 									
@@ -205,9 +195,9 @@
 									<div class="single-form">
 										<form action="ajouter-commentaire.php" method="POST">
 											<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Entrez votre commentaire *"></textarea>
-											<input name="id_client"  type="hidden" value="<?php echo $_SESSION['id']; ?>" />
-											<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
-											<input name="nom"  type="hidden" value="<?php echo $nom; ?>" />
+											<input name="id_client"  type="hidden" value="01" />
+											<input name="id_post"  type="hidden" value="01" />
+											<input name="nom"  type="hidden" value="admin" />
 
 									</div>
 									
@@ -310,7 +300,7 @@
 		<li><i class="bx bx-chevron-right"></i> <a href="../index.html">Home</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="developement_p.html">Development Personelle</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
-		<li><i class="bx bx-chevron-right"></i> <a href="blog_all.html">Blog</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="forum.php.html">Blog</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="#doctors">Doctors</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
 	  </ul>

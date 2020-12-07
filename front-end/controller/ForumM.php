@@ -8,25 +8,23 @@ public function ajouterPost($post)
     {
         $db=config::getConnexion();
         
-        $req="INSERT INTO `post`(`titre`, `categorie`, `post`, `image`, `date_post`, `id_client`) VALUES (:titre,:categorie,:post,:image,now(),:id_client)";
-        $id=$post->get_id_client();
+        $req="INSERT INTO `post`(`titre`, `categorie`, `post`, `image`, `date_post`, `id_patient`) VALUES (:titre,:categorie,:post,:image,now(),:id_patient)";
+        $id=$post->get_id_patient();
         $sql=$db->prepare($req);
         
         $sql->bindValue(':titre',$post->get_titre());
         $sql->bindValue(':categorie',$post->get_categorie());
         $sql->bindValue(':post',$post->get_post());
         $sql->bindValue(':image',$post->get_image());
-        $sql->bindValue(':id_client',$post->get_id_client());
+        $sql->bindValue(':id_patient',$post->get_id_patient());
       
-
          if($sql->execute())
          {
           $last_id = $db->lastInsertId();
                  echo "<meta http-equiv=\"refresh\" content=\"0;URL=forum-detail.php?id=".$last_id."\">"; 
                }
             else
-                 echo "<meta http-equiv=\"refresh\" content=\"0;URL=ajouter-post.php\">"; 
-        	
+                 echo "<meta http-equiv=\"refresh\" content=\"0;URL=ajouter-post.php\">"; 	
        
     } 
     public function ajouterLike($id_post) 
@@ -46,25 +44,24 @@ public function ajouterPost($post)
           
        
     } 
-    public function ajouterCommentaire($comment,$id_client,$id_post,$nom) 
+    public function ajouterCommentaire($comment,$id_patient,$id_post,$nom) 
     {
         $db=config::getConnexion();
         
-        $req="INSERT INTO `commentaire`( `nom`,`comment`, `date_com`, `id_client`, `id_post`) VALUES ('$nom',:comment,now(),$id_client,$id_post)";
+        $req="INSERT INTO `commentaire`( `nom`,`comment`, `date_com`, `id_patient`, `id_post`) VALUES ('$nom',:comment,now(),$id_patient,$id_post)";
        
         $sql=$db->prepare($req);
         
         $sql->bindValue(':comment',$comment->get_comment());
 
       
-
          if($sql->execute())
          {
                  echo "<meta http-equiv=\"refresh\" content=\"0;URL=forum-detail.php?id=".$id_post."\">"; 
                }
             else
                   echo "<meta http-equiv=\"refresh\" content=\"0;URL=login-client-inter.php\">"; 
-          
+        
        
     } 
      public function afficherPost()

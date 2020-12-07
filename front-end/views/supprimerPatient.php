@@ -4,8 +4,8 @@
 	$utilisateurC=new UtilisateurC();
 	
 	if (isset($_POST["id"])){
-		$utilisateurC->supprimerUtilisateur($_POST["id"]);
-		header('Location:afficherUtilisateurs.php');
+		$utilisateurC->supprimerPatient($_POST["id"]);
+		header('Location:afficherPatient.php');
 	}
 
 ?>

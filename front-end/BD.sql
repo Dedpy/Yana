@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 03, 2020 at 01:36 PM
+-- Generation Time: Dec 07, 2020 at 08:59 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -33,6 +33,25 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
   `login` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   PRIMARY KEY (`login`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commentaire`
+--
+
+DROP TABLE IF EXISTS `commentaire`;
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `comment` longtext NOT NULL,
+  `date_com` datetime NOT NULL,
+  `id_patient` int(11) NOT NULL,
+  `id_post` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_post` (`id_post`),
+  KEY `id_patient` (`id_patient`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -91,19 +110,19 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questions`
+-- Table structure for table `post`
 --
 
-DROP TABLE IF EXISTS `questions`;
-CREATE TABLE IF NOT EXISTS `questions` (
-  `id_question` int(11) NOT NULL AUTO_INCREMENT,
-  `sujet_question` varchar(250) NOT NULL,
-  `message_question` varchar(250) NOT NULL,
-  `date_question` date NOT NULL,
-  `categorie_question` varchar(250) NOT NULL,
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE IF NOT EXISTS `post` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(100) NOT NULL,
+  `categorie` varchar(100) NOT NULL,
+  `post` longtext NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `date_post` datetime NOT NULL,
   `id_patient` int(11) NOT NULL,
-  PRIMARY KEY (`id_question`),
-  KEY `FK_Q_id_patient` (`id_patient`)
+  KEY `FK_commentaire` (`id_patient`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -136,26 +155,6 @@ CREATE TABLE IF NOT EXISTS `rendezvous` (
   KEY `FK_RDV_id_patient` (`id_patient`),
   KEY `FK_RDV_id_doctor` (`id_doctor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reponses`
---
-
-DROP TABLE IF EXISTS `reponses`;
-CREATE TABLE IF NOT EXISTS `reponses` (
-  `id_reponse` int(11) NOT NULL AUTO_INCREMENT,
-  `message_reponse` varchar(250) NOT NULL,
-  `date_reponse` date NOT NULL,
-  `id_patient` int(11) NOT NULL,
-  `id_question` int(11) NOT NULL,
-  PRIMARY KEY (`id_reponse`),
-  KEY `FK_R_id_patient` (`id_patient`),
-  KEY `FK_R_id_question` (`id_question`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-ALTER TABLE `questions` CHANGE `date_question` `date_question` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP; 
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,10 +1,10 @@
 <?PHP
-	include "../controller/UtilisateurC.php";
+	include "../controller/patientC.php";
 
-	$utilisateurC=new UtilisateurC();
+	$patientC=new patientC();
 	
 	if (isset($_POST["id"])){
-		$utilisateurC->supprimerPatient($_POST["id"]);
+		$patientC->supprimerPatient($_POST["id"]);
 		header('Location:afficherPatient.php');
 	}
 

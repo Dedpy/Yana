@@ -1,12 +1,12 @@
 <?php
-    include_once '../Model/Utilisateur.php';
-    include_once '../Controller/UtilisateurC.php';
+    include_once '../Model/patient.php';
+    include_once '../Controller/patientC.php';
     
     $error = "";
     // create user
     $user = null;
     // create an instance of the controller
-    $userC = new UtilisateurC();
+    $userC = new patientC();
     if (
         isset($_POST["nom"]) && 
         isset($_POST["prenom"]) &&
@@ -25,7 +25,7 @@
             !empty($_POST["login"]) && 
             !empty($_POST["password"])
         ) {
-            $user = new Utilisateur(
+            $user = new patient(
                 $_POST['nom'],
                 $_POST['prenom'], 
                 $_POST['date_naissance'],
@@ -94,7 +94,7 @@
                                                     <label class="small mb-1" for="date_naissance">date de naissance:</label>
                                                 </td>
                                                 <td>
-                                                    <input  class="form-control" type="text" name="date_naissance" id="date_naissance" maxlength="20" >
+                                                    <input  class="form-control" type="date" name="date_naissance" id="date_naissance">
                                                 </td>
                                             </tr>
 
@@ -167,3 +167,4 @@
         </div>
     </body>
 </html>
+                      

@@ -4,19 +4,21 @@
 
 	class UtilisateurC {
 		
-		function ajouterUtilisateur($Utilisateur){
-			$sql="INSERT INTO Utilisateur (nom, prenom, email, login, password) 
-			VALUES (:nom,:prenom,:email, :login, :password)";
+		function ajouterPatient($patient){
+			$sql="INSERT INTO patient (nom, prenom, date_naissance, telephone, email, login, password) 
+			VALUES (:nom, :prenom, :date_naissance, :telephone, :email, :login, :password)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
 			
 				$query->execute([
-					'nom' => $Utilisateur->getNom(),
-					'prenom' => $Utilisateur->getPrenom(),
-					'email' => $Utilisateur->getEmail(),
-					'login' => $Utilisateur->getLogin(),
-					'password' => $Utilisateur->getPassword()
+					'nom' => $patient->getNom(),
+					'prenom' => $patient->getPrenom(),
+					'date_naissance' => $patient->getDateNaissance(),
+					'telephone' => $patient->getTelephone(),
+					'email' => $patient->getEmail(),
+					'login' => $patient->getLogin(),
+					'password' => $patient->getPassword()
 				]);			
 			}
 			catch (Exception $e){
@@ -24,9 +26,9 @@
 			}			
 		}
 		
-		function afficherUtilisateurs(){
+		function afficherPatient(){
 			
-			$sql="SELECT * FROM Utilisateur";
+			$sql="SELECT * FROM patient";
 			$db = config::getConnexion();
 			try{
 				$liste = $db->query($sql);
@@ -37,8 +39,8 @@
 			}	
 		}
 
-		function supprimerUtilisateur($id){
-			$sql="DELETE FROM Utilisateur WHERE id= :id";
+		function supprimerPatient($id){
+			$sql="DELETE FROM patient WHERE id= :id";
 			$db = config::getConnexion();
 			$req=$db->prepare($sql);
 			$req->bindValue(':id',$id);
@@ -49,24 +51,28 @@
 				die('Erreur: '.$e->getMessage());
 			}
 		}
-		function modifierUtilisateur($Utilisateur, $id){
+		function modifierPatient($patient, $id){
 			try {
 				$db = config::getConnexion();
 				$query = $db->prepare(
-					'UPDATE Utilisateur SET 
+					'UPDATE patient SET 
 						nom = :nom, 
 						prenom = :prenom,
+						date_naissance = :date_naissance,
+						telephone = :telephone,
 						email = :email,
 						login = :login,
 						password = :password
 					WHERE id = :id'
 				);
 				$query->execute([
-					'nom' => $Utilisateur->getNom(),
-					'prenom' => $Utilisateur->getPrenom(),
-					'email' => $Utilisateur->getEmail(),
-					'login' => $Utilisateur->getLogin(),
-					'password' => $Utilisateur->getPassword(),
+					'nom' => $patient->getNom(),
+					'prenom' => $patient->getPrenom(),
+					'date_naissance' => $patient->getDateNaissance(),
+					'telephone' => $patient->getTelephone(),
+					'email' => $patient->getEmail(),
+					'login' => $patient->getLogin(),
+					'password' => $patient->getPassword(),
 					'id' => $id
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";
@@ -74,8 +80,8 @@
 				$e->getMessage();
 			}
 		}
-		function recupererUtilisateur($id){
-			$sql="SELECT * from Utilisateur where id=$id";
+		function recupererPatient($id){
+			$sql="SELECT * from patient where id=$id";
 			$db = config::getConnexion();
 			try{
 				$query=$db->prepare($sql);
@@ -89,8 +95,8 @@
 			}
 		}
 
-		function recupererUtilisateur1($id){
-			$sql="SELECT * from Utilisateur where id=$id";
+		function recupererPatient1($id){
+			$sql="SELECT * from patient where id=$id";
 			$db = config::getConnexion();
 			try{
 				$query=$db->prepare($sql);

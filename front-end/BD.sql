@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 07, 2020 at 11:18 PM
+-- Generation Time: Dec 08, 2020 at 11:08 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `comment` longtext NOT NULL,
   `date_com` datetime NOT NULL,
@@ -53,7 +53,15 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   PRIMARY KEY (`id`),
   KEY `id_post` (`id_post`),
   KEY `id_patient` (`id_patient`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `commentaire`
+--
+
+INSERT INTO `commentaire` (`id`, `nom`, `comment`, `date_com`, `id_patient`, `id_post`) VALUES
+(4, 'admin', 'hekkk', '2020-12-08 11:26:02', 1, 1),
+(3, 'admin', 'chbik labes', '2020-12-08 11:23:29', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -125,14 +133,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   `id_patient` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_commentaire` (`id_patient`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `post`
 --
 
 INSERT INTO `post` (`id`, `titre`, `categorie`, `post`, `image`, `date_post`, `id_patient`) VALUES
-(1, 'la depression ma detruit', 'Depression', 'je suis un etudiant a esprit\r\ncordialement', 'img/blog/general.png', '2020-12-08 00:16:50', 1);
+(25, 'Depression', 'Depression', 'labes labes', 'img/blog/general.png', '2020-12-08 11:23:10', 1);
 
 -- --------------------------------------------------------
 
@@ -164,6 +172,26 @@ CREATE TABLE IF NOT EXISTS `rendezvous` (
   KEY `FK_RDV_id_patient` (`id_patient`),
   KEY `FK_RDV_id_doctor` (`id_doctor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscribe`
+--
+
+DROP TABLE IF EXISTS `subscribe`;
+CREATE TABLE IF NOT EXISTS `subscribe` (
+  `email` varchar(50) NOT NULL,
+  `hash` varchar(255) NOT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subscribe`
+--
+
+INSERT INTO `subscribe` (`email`, `hash`) VALUES
+('', 'd41d8cd98f00b204e9800998ecf8427e');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

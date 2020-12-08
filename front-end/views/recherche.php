@@ -148,7 +148,7 @@
 							<div class="blog-right-area">
 								<!-- blog-right-start -->
 								<div class="blog-right mb-50 mb-3">
-									<form action="recherche.php">
+									<form action="#">
 										<input type="text" placeholder="Search Here"/>
 										<button type="submit"><i class="fa fa-search"></i></button>
 									</form>
@@ -158,8 +158,6 @@
 								<div class="blog-right mb-50 mb-3">
 									<h3>Publication Recente</h3>
 									<div class="sidebar-post">
-										
-										
 										<?php foreach ($posts as $row) {?>
 										<!-- single-post-start -->
 										<div class="single-post">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<script src="../assets/js/script.js"></script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -105,11 +105,11 @@
 							<div class="col-lg-10">
 								<div class="contact-form">
 									<h3><i class="fa fa-envelope-o"></i>Poster</h3>
-									<form  action="ajouter-post.php" method="POST">
+									<form name="formulaire" onsubmit="verif()" action="ajouter-post.php" method="POST">
 									<div class="row">
 										<div class="col-lg-12">
 												<div class="checkout-form-list">
-													<input type="text"  name="titre"  placeholder="Titre" />
+													<input type="text"  name="titre" id="titre"  placeholder="Titre" />
 													<input name="id_client"  type="hidden" value="01" />
 											</div>
 										</div>
@@ -117,7 +117,7 @@
 									<div class="col-lg-12 ">
 											<div class="country-select">
 												
-												<select name="categorie" class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
+												<select name="categorie" id="categorie" class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
 													<option >Selectioner Une Categorie</option>
 													<option value="Depression">Depression</option>
 													<option value="Maladie mentale">Maladie mentale</option>
@@ -135,12 +135,10 @@
 										
 											<textarea  cols="130" rows="4"  name="msg" placeholder="Post"></textarea>
 									</div>
-										
 									</div>	
 									</div>
 									<div class="single-register">
-											<input class="confirmer" type="submit" value="Poster" >
-										
+											<input class="confirmer" type="submit" value="Poster">
 									</div>
 									</form>
 								</div>	

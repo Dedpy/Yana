@@ -115,7 +115,7 @@
 												<div class="checkout-form-list">
 													<input type="text"  name="titre"  value="<?php echo $row['titre']; ?>" placeholder="Titre" />
 													<input name="id_client"  type="hidden" value="1" />
-													<input name="id_post"  type="hidden" value="1" />
+													<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
 											</div>
 										</div>
 										

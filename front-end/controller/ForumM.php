@@ -70,9 +70,6 @@ public function ajouterPost($post)
         $result ="SELECT * FROM post";
         $sql=$db->query($result);
         return $sql;
-       
-    
-
     }
     public function maxPost()
     {

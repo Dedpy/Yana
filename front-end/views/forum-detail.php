@@ -196,7 +196,7 @@
 										<form action="ajouter-commentaire.php" method="POST">
 											<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Entrez votre commentaire *"></textarea>
 											<input name="id_client"  type="hidden" value="01" />
-											<input name="id_post"  type="hidden" value="01" />
+											<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
 											<input name="nom"  type="hidden" value="admin" />
 
 									</div>
@@ -252,24 +252,7 @@
 										<?php } ?>
 										<!-- single-post-end -->
 									</div>
-								</div>
-								<!-- blog-right-end -->
-								<!-- blog-right-start -->
-								<div class="blog-right mb-50 mb-3">
-									<h3>Categories</h3>
-									<ul>
-										<li><a href="#">General</a></li>
-										<li><a href="#">Actualites</a></li>
-										
-										<li><a href="#">Questions</a></li>
-										<li><a href="#">Feedback</a></li>
-										<li><a href="#">Aide</a></li>
-								
-									</ul>
-								</div>
-								<!-- blog-right-end -->
-								
-								
+								</div>							
 							</div>
 							<!-- blog-right-area-end -->
 						</div>

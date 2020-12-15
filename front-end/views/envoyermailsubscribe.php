@@ -13,7 +13,7 @@ $message = $_FILES['avatar'];
                             $hash=$donnees['hash'];
 
 
- $link = 'unsubscribe.php?key='.$hash; //change your domain here.
+ $link = 'http://localhost/ProjetWeb2A28/front-end/views/unsubscribe.php?key='.$hash; //change your domain here.
  $strSubject="YANA | Newsletter";
  $header='Content-type: text/html; charset=iso-8859-1 From :yana.tn@esprit.tn';
         

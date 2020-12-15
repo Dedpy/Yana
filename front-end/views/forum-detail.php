@@ -288,15 +288,6 @@
 		<li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
 	  </ul>
 	  </div>
-
-	  <div class="col-lg-4 col-md-6 footer-newsletter">
-		<h4>Join Our Newsletter</h4>
-		<p>Pour recevoir toutes les noveautes medicales</p>
-		<form action="" method="post">
-		  <input type="email" name="email"><input type="submit" value="Subscribe">
-		</form>
-	  </div>
-
 	</div>
   </div>
 </div>

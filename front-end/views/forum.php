@@ -195,38 +195,14 @@
 					</div>
 				</div>
 			</div>
-			<!-- newslatter-area-start -->
-			<div class="newslatter-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="bt-top ptb-80">
-								<div class="newlatter-content text-center">
-									
-									<h3>Offres spéciales pour les abonnés</h3>
-									<p>Abonnez-vous à nos newsletters maintenant et restez au courant des nouvelles collections, des derniers lookbooks et des offres exclusives.</p>
 
 
-									<form  method="post" action="subscribe.php">
-										<input  require type="email" name="subscribe" placeholder="Entrez votre adresse mail ici..."/>
-										<button type="submit">S'abonner</button>
-									</form>
 
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- newslatter-area-end -->
 			<!-- ======= Footer ======= -->
-			<footer id="footer">
-
+<footer id="footer">
 <div class="footer-top">
   <div class="container">
 	<div class="row">
-
 	  <div class="col-lg-3 col-md-6 footer-contact">
 		<h3>YANA</h3>
 		<p>
@@ -237,7 +213,6 @@
 		  <strong>Email:</strong> yana.tn@esprit.tn<br>
 		</p>
 	  </div>
-
 	  <div class="col-lg-2 col-md-6 footer-links">
 		<h4>Useful Links</h4>
 		<ul>
@@ -249,21 +224,18 @@
 		<li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
 	  </ul>
 	  </div>
-
 	  <div class="col-lg-4 col-md-6 footer-newsletter">
 		<h4>Join Our Newsletter</h4>
 		<p>Pour recevoir toutes les noveautes medicales</p>
-		<form action="" method="post">
-		  <input type="email" name="email"><input type="submit" value="Subscribe">
+		<form  method="post" action="subscribe.php">
+				<input  require type="email" name="subscribe" placeholder="Entrez votre adresse mail ici..."/>
+				<button type="submit">S'abonner</button>
 		</form>
 	  </div>
-
 	</div>
   </div>
 </div>
-
 <div class="container d-md-flex py-4">
-
   <div class="mr-md-auto text-center text-md-left">
 	<div class="copyright">
 	  &copy; Copyright <strong><span>YANA</span></strong>. All Rights Reserved
@@ -283,11 +255,10 @@
 	<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
   </div>
 </div>
-</footer><!-- End Footer -->
-
+</footer>
+<!-- End Footer -->
 <div id="preloader"></div>
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
 <!-- Vendor JS Files -->
 <script src="../assets/vendor/jquery/jquery.min.js"></script>
 <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -298,10 +269,7 @@
 <script src="../assets/vendor/counterup/counterup.min.js"></script>
 <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
 <!-- Template Main JS File -->
 <script src="../assets/js/main.js"></script>
-
 </body>
-
 </html>

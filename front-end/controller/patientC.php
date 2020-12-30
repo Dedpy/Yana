@@ -1,6 +1,6 @@
 <?PHP
 	include "../config.php";
-	require_once '../model/patient.php';
+	require_once '../Model/patient.php';
 
 	class patientC {
 		

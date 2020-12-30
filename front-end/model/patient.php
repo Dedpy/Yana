@@ -8,8 +8,9 @@
 		private  $email = null;
 		private  $login = null;
 		private  $password = null;
+		private  $code = null;
 		
-		function __construct(string $nom, string $prenom, date $date_naissance, int $telephone , string $email, string $login, string $password){
+		function __construct(string $nom, string $prenom, string $date_naissance, int $telephone , string $email, string $login, string $password){
 			
 			$this->nom=$nom;
 			$this->prenom=$prenom;
@@ -29,7 +30,7 @@
 		function getPrenom(): string{
 			return $this->prenom;
 		}
-		function getDateNaissance(): date{
+		function getDateNaissance(): string{
 			return $this->date_naissance;
 		}
 		function getTelephone(): int{
@@ -45,6 +46,9 @@
 		function getPassword(): string{
 			return $this->password;
 		}
+		function getCode(): int{
+			return $this->code;
+		}
 
 		function setNom(string $nom): void{
 			$this->nom=$nom;
@@ -52,7 +56,7 @@
 		function setPrenom(string $prenom): void{
 			$this->prenom=$prenom;
 		}
-		function setDateNaissance(date $date_naissance): void{
+		function setDateNaissance(string $date_naissance): void{
 			 $this->date_naissance=$date_naissance;
 		}
 		function setTelephone(int $telephone): void{
@@ -66,6 +70,9 @@
 		}
 		function setPassword(string $password): void{
 			$this->password=$password;
+		}
+		function setCode(int $code): void{
+			$this->code=$code;
 		}
 	}
 ?>

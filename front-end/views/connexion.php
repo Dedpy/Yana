@@ -1,7 +1,24 @@
 <?php
-    include_once '../model/patient.php';
-    include "../controller/patientC.php";
-    
+
+    include_once '../Model/patient.php';
+    include_once '../Controller/patientC.php';
+    require('config2.php');
+   
+  session_start();
+  /*if(isset($_POST["captcha"])&&$_POST["captcha"]!=""&&$_SESSION["code"]==$_POST["captcha"])
+  {
+    $status = "<p style='color:#FFFFFF; font-size:20px'>
+    <span style='background-color:#46ab4a;'>Votre code captcha est correct.</span></p>"; 
+  }else{
+    $status = "<p style='color:#FFFFFF; font-size:20px'>
+    <span style='background-color:#FF0000;'>Le code captcha entré ne correspond pas! Veuillez réessayer.</span></p>";
+  }
+  echo $status;
+*/
+
+
+
+
     $error = "";
     // create user
     $user = null;
@@ -14,7 +31,9 @@
         isset($_POST["telephone"]) &&
         isset($_POST["email"]) && 
         isset($_POST["login"]) && 
-        isset($_POST["password"])
+        isset($_POST["password"])&&
+        isset($_POST["captcha"])&&$_POST["captcha"]!=""&&$_SESSION["code"]==$_POST["captcha"]
+                
     ) { 
         if (
             !empty($_POST["nom"]) && 
@@ -24,7 +43,15 @@
             !empty($_POST["email"]) && 
             !empty($_POST["login"]) && 
             !empty($_POST["password"])
+            
         ) {
+            $sql="SELECT * FROM patient WHERE email='" . $_POST['email'] . "'";
+			$db = config::getConnexion();
+			
+				$query=$db->prepare($sql);
+				$query->execute();
+                $count=$query->rowCount();
+                if($count==0){
             $user = new patient(
                 $_POST['nom'],
                 $_POST['prenom'], 
@@ -34,13 +61,23 @@
                 $_POST['login'],
                 $_POST['password']
             );
+    
+            
             $userC->ajouterPatient($user);
-            header('Location:afficherPatient.php');
+            header('Location:login.php');
+        
+            $status = "<p style='color:#FFFFFF; font-size:20px'>
+            <span style='background-color:#46ab4a;'>Votre code captcha est correct.</span></p>";
         }
+        else echo 'l email existe deja';
+        }
+    
         else
         $error = "Missing information";
-    }  
+    }
+     
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,6 +118,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+
 <body>
 
   <!-- ======= Top Bar ======= -->
@@ -100,10 +138,12 @@
       </div>
     </div>
   </div>
+
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="index.html">YANA</h1>
+
+      <h1 class="logo mr-auto"><a href="../index.html">YANA</h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
       <nav class="nav-menu d-none d-lg-block">
@@ -118,12 +158,79 @@
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
-  <section></section>  <section></section>
-  <script src="script.js"></script>
-        <div ><a class="btn btn-primary " href="afficherPatient.php">Retour à la liste</a></div>
-        <hr>
+  <section></section>
+    <!-- <script>
+    
+    function verif() {
+    var errors = "<ul>";
+    var nom = document.querySelector('#nom').value;
+    var prenom = document.querySelector('#prenom').value;
+    var date_naissance = document.querySelector('#date_naissance').value;
+    var telephone = document.querySelector('#telephone').value;
+    var email = document.querySelector('#email').value;
+    var login = document.querySelector('#login').value;
+    var password = document.querySelector('#password').value;
+    var confpassword = document.querySelector('#confpassword').value;
+
+
+    if (nom.charAt(0) < 'A' || nom.charAt(0) > 'Z') {
+        
+        errors += "<li>Le nom doit commencer par une lettre Majuscule </li>";
+        
+    }
+
+    if (prenom.charAt(0) < 'A' || prenom.charAt(0) > 'Z') {
+        errors += "<li>Le prenom doit commencer par une lettre Majuscule </li>";
+        
+    }
+
+    if (date_naissance === "") {
+        errors += "<li>La date est obligatoire </li>";
+        
+    }
+
+    if (email === "") {
+        errors += "<li>L'email est obligatoire </li>";
+        
+    }
+
+    if (login === "") {
+        errors += "<li>Le login est obligatoire </li>";
+        
+    }
+
+    if ( telephone.length != 8) {
+        errors += "<li>Numéro de téléphone erroné </li>";
+        
+    }
+
+    if (password !== confpassword || password === "" || confpassword === "" || password.length != 8) {
+        errors += "<li> Veuillez vérifier le mot de passe saisi il doit contenir 8 caracteres au minimum</li>";
+        document.querySelector('#password').value = "";
+        document.querySelector('#confpassword').value = "";
+        document.querySelector('#password').focus();
+        
+    }
+    document.writeln(errors);
+    // if (errors !== "<ul>") {
+    //     document.querySelector('#erreur').style.color = 'red';
+    //     errors += "</ul>"
+    //     document.getElementById('erreur').innerHTML = errors;
+    //     return false;
+    // } else {
+    //     var msg = "Bienvenue " + nom + " "
+    //         + prenom + ".\n ";
+
+    //     alert(msg);
+    // }
+
+
+} -->
+
+   <script src="script.js"></script>
+        
         <div id="error">
-            <?//php echo $error; ?>
+            <?php echo $error; ?>
         </div>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -132,7 +239,7 @@
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h1 class="text-center font-weight-light my-4">créer un compte</h1>
+                                    <h1 class="text-center font-weight-light my-4">S'inscrire</h1>
                                 </div>
                                 <div class="card-body">
                                     <form action="" method="POST">
@@ -142,7 +249,7 @@
                                                     <label class="small mb-1" for="nom">Nom:</label>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="text" name="nom" id="nom" maxlength="20" placeholder="Entrer le nom">
+                                                    <input class="form-control" type="text" name="nom" id="nom" maxlength="20" placeholder="Entrer le nom" >
                                                 </td>
                                             </tr>
 
@@ -160,7 +267,7 @@
                                                     <label class="small mb-1" for="date_naissance">date de naissance:</label>
                                                 </td>
                                                 <td>
-                                                    <input  class="form-control" type="date" name="date_naissance" id="date_naissance">
+                                                    <input  class="form-control" type="text" name="date_naissance" id="date_naissance">
                                                 </td>
                                             </tr>
 
@@ -213,101 +320,42 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
+                                                <img src="captcha.php"/>
+                                                <input class="form-control" type="text" name="captcha"/>
                                                     <input class="btn btn-primary btn-block" type="submit" value="Envoyer" onclick="verif();"> 
+                                                   
+
                                                 </td>
                                             </tr>
-                                            
+                                           
                                             <tr>
                                                 <td></td>
                                                 <td>
                                                     <input class="btn btn-primary btn-block" type="reset" value="Annuler" >
                                                 </td>
                                             </tr>
+                                            <tr><td></td> </tr>
                                         </table>
+                                        
                                     </form>
+                                    
+   
+                                <div class="btn btn-primary btn-block" onclick="myFunction()" >Imprimer la page</div>
+                                
+                                <script>
+                                function myFunction() {
+                                    window.print();
+                                }
+                                </script>
                             </div>
+                        <div> 
+                            <a href="login.php">j'ai deja un compte </a> 
+                        </div>
                         </div>
                     </div>
                 </div>                         
             </div>
         </div>
-<!-- ======= Footer ======= -->
-<footer id="footer">
-<div class="footer-top">
-  <div class="container"> 
-    <div class="row">
-
-      <div class="col-lg-3 col-md-6 footer-contact">
-        <h3>YANA</h3>
-        <p>
-          ESPRIT <br>
-          Ariana sghira, 2080<br>
-          Tunisia <br><br>
-          <strong>Phone:</strong> +216 94 366 666<br>
-          <strong>Email:</strong> yana.tn@esprit.tn<br>
-        </p>
-      </div>
-
-      <div class="col-lg-2 col-md-6 footer-links">
-        <h4>Useful Links</h4>
-        <ul>
-        <li><i class="bx bx-chevron-right"></i> <a href="../index.html">Home</a></li>
-        <li><i class="bx bx-chevron-right"></i> <a href="developement_p.html">Development Personelle</a></li>
-        <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
-        <li><i class="bx bx-chevron-right"></i> <a href="forum.php">Blog</a></li>
-        <li><i class="bx bx-chevron-right"></i> <a href="#doctors">Doctors</a></li>
-        <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
-      </ul>
-      </div>
-      <div class="col-lg-4 col-md-6 footer-newsletter">
-        <h4>Join Our Newsletter</h4>
-        <p>Pour recevoir toutes les noveautes medicales</p>
-        <form action="" method="post">
-          <input type="email" name="email"><input type="submit" value="Subscribe">
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container d-md-flex py-4">
-  <div class="mr-md-auto text-center text-md-left">
-    <div class="copyright">
-      &copy; Copyright <strong><span>YANA</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
-    </div>
-  </div>
-  <div class="social-links text-center text-md-right pt-3 pt-md-0">
-    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-  </div>
-</div>
-</footer><!-- End Footer -->
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-<script src="../assets/vendor/php-email-form/validate.js"></script>
-<script src="../assets/vendor/venobox/venobox.min.js"></script>
-<script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-<script src="../assets/vendor/counterup/counterup.min.js"></script>
-<script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-<!-- Template Main JS File -->
-<script src="../assets/js/main.js"></script>
-
-</body>
-
-</html>               
+    </body>
+</html>
+                      

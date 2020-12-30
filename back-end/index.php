@@ -124,26 +124,6 @@
                                         </div>
                                     </div>
 
-                                    <?php
-                                        include_once '../core/commandeC.php';
-                                        include_once '../core/produitC.php';
-                                        $comm=new CommandeC();
-                                        $prod=new ProduitManage();
-                                        $result=$comm->meilleureVente();
-                                        $ventes=$comm->commandesCeMois();
-                                        $ventes1=$comm->commandesMoisDernier();
-                                        if($ventes['total']==null)
-                                        {
-                                            $ventes['total']=0;
-                                        }
-                                        $articles=$comm->articlesCeMois();
-                                        if ($ventes1['total']>0)
-                                            $augmentation=round((($ventes['total']-$ventes1['total'])/$ventes1['total'])*100);
-                                        else
-                                            $augmentation=0;
-                                        $best=$prod->recupererProduitBest($result['id_produit']);
-                                    ?>
-
                                     <h4 class="header-title mt-0 m-b-30">Commandes</h4>
 
                                     <div class="widget-chart-1">

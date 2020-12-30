@@ -1,4 +1,4 @@
- <?php  include 'session.php'; ?>
+ <!--<?php  include 'session.php'; ?>-->
  <!DOCTYPE html>
 <html>
     <head>
@@ -90,7 +90,7 @@
 
             <!-- ========== Left Sidebar Start ========== -->
 
-                        <?php  include 'left-bar.php'; ?>
+                       <!-- <?php  include 'left-bar.php'; ?>-->
 
             <!-- Left Sidebar End -->
 
@@ -118,7 +118,7 @@
 
 
                                                               <?php 
-                                           require '../config.php';
+                                           require '../front-end/config.php';
                                                         
                                             $bdd=config::getConnexion();
                                             $q=$bdd->prepare("select * from subscribe");
@@ -180,7 +180,7 @@
 
 
             <!-- Right Sidebar -->
-            <?php include 'notification-bar.php' ?>
+            <!--<?php include 'notification-bar.php' ?>-->
             <!-- /Right-bar -->
 
         </div>

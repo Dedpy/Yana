@@ -1,17 +1,3 @@
-<?php
-//include "../controller/patientC.php";
-//require 'vendor/autoload.php';
-	// Initialiser la session
-	session_start();
-	// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
-	if(!isset($_SESSION["id"])){
-    var_dump($_SESSION);
-		//header("Location: views/login.php");
-		exit(); 
-	}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,16 +5,18 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>YANA </title>
+  <title>YANA</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/logo.png" rel="icon">
+  <link href="../assets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +25,7 @@
   <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
@@ -73,57 +61,71 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
-<div class="container d-flex align-items-center">
-  <h6>Bienvenue <?php echo $_SESSION['login']; ?>!</h6>
-    <a href="../views/modifierPatient.php?id=<?PHP echo $_SESSION['id']; ?>" class="appointment-btn scrollto"> Modifier </a>
-    <a href="../views/logout.php" class="appointment-btn scrollto">Déconnexion</a>
-</div>
     <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="../index.php">YANA</h1>
+
+      <h1 class="logo mr-auto"><a href="index.html">YANA</h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="../index.php">Home</a></li>
-          <li><a href="../views/forum.php">Blog</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#doctors">Doctors</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Planifier un RDV</a></li>
-        </ul>
+            <li class="active"><a href="../index.html">Home</a></li>
+            <li><a href="developement_p.html">Development Personelle</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="forum.php">Blog</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
-  <section></section>
-  <section></section>
-			
-  
+			<!-- header-area-end -->
+			<!-- breadcrumbs-area-start -->
+			<div class="breadcrumbs-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="breadcrumb-content text-center">
+								<h2>blog</h2>
+								<ul>
+									<li><a href="#">Home /</a></li>
+									<li class="active"><a href="#">blog</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- breadcrumbs-area-end -->
+			<!-- shop-main-area-start -->
 			<div class="shop-main-area">
 				<!-- cart-main-area-start -->
+				<?php include_once '../controller/ForumM.php';
+						$rec=new ForumManage();
+							    			$result=$rec->recupererPost($_GET['id']); ?>
 				<div class="cart-main-area">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-10">
 								<div class="contact-form">
 									<h3><i class="fa fa-envelope-o"></i>Poster</h3>
-									<form name="formulaire" onsubmit="verif()" action="ajouter-post.php" method="POST">
+									<?php foreach ($result as $row) { ?>
+									<form  action="modifier-post1.php" method="POST">
 									<div class="row">
 										<div class="col-lg-12">
 												<div class="checkout-form-list">
-													<input type="text"  name="titre" id="titre"  placeholder="Titre" />
-													<input name="id_client"  type="hidden" value="<?php echo $_SESSION['id']; ?>" />
+													<input type="text"  name="titre"  value="<?php echo $row['titre']; ?>" placeholder="Titre" />
+													<input name="id_client"  type="hidden" value="1" />
+													<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
 											</div>
 										</div>
 										
 									<div class="col-lg-12 ">
 											<div class="country-select">
 												
-												<select name="categorie" id="categorie" class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
-													<option >Selectioner Une Categorie</option>
-													<option value="Depression">Depression</option>
-													<option value="Maladie mentale">Maladie mentale</option>
-													<option value="Developement personnel">Developement personnel</option>
+												<select name="categorie" class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
+													
+													<option value="<?php echo $row['categorie']; ?>"><?php echo $row['categorie']; ?></option>
+													
 
 												</select>
 											</div>
@@ -135,14 +137,17 @@
 									<div class="col-lg-12 ">
 											<div class="checkout-form-list">
 										
-											<textarea  cols="130" rows="4"  name="msg" placeholder="Post"></textarea>
+											<textarea  cols="130" rows="4"  name="msg" placeholder="<?php echo $row['post']; ?>" value="<?php echo $row['post']; ?>"></textarea>
 									</div>
+										
 									</div>	
 									</div>
 									<div class="single-register">
-											<input class="confirmer" type="submit" value="Poster">
+											<input class="confirmer" type="submit" value="Poster" >
+										
 									</div>
 									</form>
+									<?php } ?>
 								</div>	
 							</div>
 						</div>
@@ -150,7 +155,9 @@
 				</div>
 				<!-- cart-main-area-end -->
 			</div>
+				
 			</div>
+			<!-- ======= Footer ======= -->
 			<footer id="footer">
 
 <div class="footer-top">
@@ -179,6 +186,15 @@
 		<li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
 	  </ul>
 	  </div>
+
+	  <div class="col-lg-4 col-md-6 footer-newsletter">
+		<h4>Join Our Newsletter</h4>
+		<p>Pour recevoir toutes les noveautes medicales</p>
+		<form action="" method="post">
+		  <input type="email" name="email"><input type="submit" value="Subscribe">
+		</form>
+	  </div>
+
 	</div>
   </div>
 </div>

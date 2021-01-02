@@ -2,19 +2,8 @@
 
     include_once '../Model/patient.php';
     include_once '../Controller/patientC.php';
-    require('config2.php');
-   
-  session_start();
-  /*if(isset($_POST["captcha"])&&$_POST["captcha"]!=""&&$_SESSION["code"]==$_POST["captcha"])
-  {
-    $status = "<p style='color:#FFFFFF; font-size:20px'>
-    <span style='background-color:#46ab4a;'>Votre code captcha est correct.</span></p>"; 
-  }else{
-    $status = "<p style='color:#FFFFFF; font-size:20px'>
-    <span style='background-color:#FF0000;'>Le code captcha entré ne correspond pas! Veuillez réessayer.</span></p>";
-  }
-  echo $status;
-*/
+    session_start();
+  
 
 
 
@@ -159,79 +148,8 @@
     </div>
   </header><!-- End Header -->
   <section></section>
-    <!-- <script>
+   
     
-    function verif() {
-    var errors = "<ul>";
-    var nom = document.querySelector('#nom').value;
-    var prenom = document.querySelector('#prenom').value;
-    var date_naissance = document.querySelector('#date_naissance').value;
-    var telephone = document.querySelector('#telephone').value;
-    var email = document.querySelector('#email').value;
-    var login = document.querySelector('#login').value;
-    var password = document.querySelector('#password').value;
-    var confpassword = document.querySelector('#confpassword').value;
-
-
-    if (nom.charAt(0) < 'A' || nom.charAt(0) > 'Z') {
-        
-        errors += "<li>Le nom doit commencer par une lettre Majuscule </li>";
-        
-    }
-
-    if (prenom.charAt(0) < 'A' || prenom.charAt(0) > 'Z') {
-        errors += "<li>Le prenom doit commencer par une lettre Majuscule </li>";
-        
-    }
-
-    if (date_naissance === "") {
-        errors += "<li>La date est obligatoire </li>";
-        
-    }
-
-    if (email === "") {
-        errors += "<li>L'email est obligatoire </li>";
-        
-    }
-
-    if (login === "") {
-        errors += "<li>Le login est obligatoire </li>";
-        
-    }
-
-    if ( telephone.length != 8) {
-        errors += "<li>Numéro de téléphone erroné </li>";
-        
-    }
-
-    if (password !== confpassword || password === "" || confpassword === "" || password.length != 8) {
-        errors += "<li> Veuillez vérifier le mot de passe saisi il doit contenir 8 caracteres au minimum</li>";
-        document.querySelector('#password').value = "";
-        document.querySelector('#confpassword').value = "";
-        document.querySelector('#password').focus();
-        
-    }
-    document.writeln(errors);
-    // if (errors !== "<ul>") {
-    //     document.querySelector('#erreur').style.color = 'red';
-    //     errors += "</ul>"
-    //     document.getElementById('erreur').innerHTML = errors;
-    //     return false;
-    // } else {
-    //     var msg = "Bienvenue " + nom + " "
-    //         + prenom + ".\n ";
-
-    //     alert(msg);
-    // }
-
-
-} -->
-
-   <script src="script.js"></script>
-        
-        <div id="error">
-            <?php echo $error; ?>
-        </div>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <div class="container">
@@ -267,7 +185,7 @@
                                                     <label class="small mb-1" for="date_naissance">date de naissance:</label>
                                                 </td>
                                                 <td>
-                                                    <input  class="form-control" type="text" name="date_naissance" id="date_naissance">
+                                                    <input  class="form-control" type="date" name="date_naissance" id="date_naissance">
                                                 </td>
                                             </tr>
 

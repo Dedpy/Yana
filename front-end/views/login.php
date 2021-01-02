@@ -1,67 +1,27 @@
 ﻿<?php
 require('../config.php');
-require('config2.php');
 session_start();
 
 if (isset($_POST['email'])){
-	/*$email = stripslashes($_REQUEST['email']);
-	$email = mysqli_real_escape_string($conn, $email);
-	$password = stripslashes($_REQUEST['password']);
-	$password = mysqli_real_escape_string($conn, $password);
-	//$query = "SELECT * FROM patient WHERE login='$login' and password='".hash('sha256', $password)."'";
-	$query="SELECT * FROM patient WHERE email='" . $email . "' && password = '". $password."'";
-	$result = mysqli_query($conn,$query) or die(mysql_error());
-	$rows = mysqli_num_rows($result);
-	if($rows==1){
-        $_SESSION['email'] = $email;
-        //$result['id'];
-        var_dump( $result);
-       // $_SESSION['id'] = $result['id'];
-	    //header("Location: ../index.php");
-	}else{
-		$message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-	}*/
-
-
-
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-
-    $sql="SELECT * FROM patient WHERE email='" . $email . "' && password = '". $password."'";
-			$db = config::getConnexion();
-			try{
-				$query=$db->prepare($sql);
-				$query->execute();
-                $count=$query->rowCount();
-                if($count==1){
-                   $user=$query->fetch(); 
-                   $_SESSION['login'] = $user['login'];
-                $_SESSION['id'] = $user['id'];
-        header('Location:../index.php');
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+        $sql="SELECT * FROM patient WHERE email='" . $email . "' && password = '". $password."'";
+                $db = config::getConnexion();
+                try{
+                        $query=$db->prepare($sql);
+                        $query->execute();
+                        $count=$query->rowCount();
+                        if($count==1){
+                            $user=$query->fetch(); 
+                            $_SESSION['login'] = $user['login'];
+                            $_SESSION['id'] = $user['id'];
+                            header('Location:../index.php');
+                        }
                 }
-				
-               // var_dump($user);
-                //$_SESSION['email'] = $email;
-                
-        //var_dump($_SESSION);
-			}
-			catch (Exception $e){
-				die('Erreur: '.$e->getMessage());
-            }
-        } 
-   /* $db = config::getConnexion();
-    $query = $db->prepare(
-        "SELECT * FROM patient WHERE email='" . $email . "' && password = '". $password."'"
-    );
-    $query->execute();
-    //var_dump( $result);
-    //        $_SESSION['id'] = $result['id']
-    
-} catch (PDOException $e) {
-    $e->getMessage();
-}*/
-
-
+                catch (Exception $e){
+                    die('Erreur: '.$e->getMessage());
+                }
+    } 
 
 ?>
 
@@ -72,7 +32,7 @@ if (isset($_POST['email'])){
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>YANA</title>
+  <title>Se connecter</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -146,7 +106,7 @@ if (isset($_POST['email'])){
     </div>
   </header><!-- End Header -->
   <section></section>
-<div id="layoutAuthentication">
+	<div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -158,7 +118,6 @@ if (isset($_POST['email'])){
                                 <div class="card-body">
                                     <form action="" method="POST">
                                         <table  align="center">
-                                            
                                             <tr>
                                                 <td>
                                                     <label class="small mb-1" for="email">email:</label>
@@ -176,8 +135,6 @@ if (isset($_POST['email'])){
                                                     <input class="form-control" type="password" name="password" id="password" placeholder="Entrer le mot de passe">
                                                 </td>
                                             </tr>
-
-                                            
                                 </div>
                                             <tr>
                                                 <td></td>
@@ -196,9 +153,9 @@ if (isset($_POST['email'])){
 
                                         </table>
 									</form>
-									<div > <a href="connexion.php">j'ai pas de compte  </a> </div>
+									<div> <a href="connexion.php">j'ai pas de compte  </a> </div>
 									
-                                    <div > <a href="motdepasse.php">Mot De Passe oublié ? </a> </div>
+                                    <div> <a href="motdepasse.php">Mot De Passe oublié ? </a> </div>
                             </div>
                         </div>
                     </div>

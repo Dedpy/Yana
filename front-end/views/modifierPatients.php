@@ -51,67 +51,7 @@
 	<body class="bg-primary">
 		<!-- <div><a class="btn btn-primary " href="afficherPatient.php">Retour à la liste</a></div> -->
         <hr>
-        <script>
-    function verif() {
-    var errors = "<ul>";
-    var nom = document.querySelector('#nom').value;
-    var prenom = document.querySelector('#prenom').value;
-    var date_naissance = document.querySelector('#date_naissance').value;
-    var telephone = document.querySelector('#telephone').value;
-    var email = document.querySelector('#email').value;
-    var login = document.querySelector('#login').value;
-    var password = document.querySelector('#password').value;
-    var confpassword = document.querySelector('#confpassword').value;
-
-
-    if (nom.charAt(0) < 'A' || nom.charAt(0) > 'Z') {
         
-        errors += "<li>Le nom doit commencer par une lettre Majuscule </li>";
-        
-    }
-
-    if (prenom.charAt(0) < 'A' || prenom.charAt(0) > 'Z') {
-        errors += "<li>Le prenom doit commencer par une lettre Majuscule </li>";
-        
-    }
-
-    if (date_naissance === "") {
-        errors += "<li>La date est obligatoire </li>";
-        
-    }
-
-    if (email === "") {
-        errors += "<li>L'email est obligatoire </li>";
-        
-    }
-
-    if (login === "") {
-        errors += "<li>Le login est obligatoire </li>";
-        
-    }
-
-    if ( telephone.length != 8) {
-        errors += "<li>Numéro de téléphone erroné </li>";
-        
-    }
-
-    if (password !== confpassword || password === "" || confpassword === "" || password.length != 8) {
-        errors += "<li> Veuillez vérifier le mot de passe saisi il doit contenir 8 caracteres au minimum</li>";
-        document.querySelector('#password').value = "";
-        document.querySelector('#confpassword').value = "";
-        document.querySelector('#password').focus();
-        
-    }
-    document.writeln(errors);
-   
-
-}
-</script>
-        
-        <div id="error">
-            <?php echo $error; ?>
-        </div>
-		
 		<?php
 			if (isset($_GET['id'])){
 				$user = $patientC->recupererPatient1($_GET['id']);
@@ -152,7 +92,7 @@
                                                     <label class="small mb-1" for="date_naissance">date de naissance:</label>
                                                 </td>
                                                 <td>
-                                                    <input  class="form-control" type="text" name="date_naissance" id="date_naissance" value = "<?php echo $user->date_naissance; ?>">
+                                                    <input  class="form-control" type="date" name="date_naissance" id="date_naissance" value = "<?php echo $user->date_naissance; ?>">
                                                 </td>
                                             </tr>
 

@@ -6,7 +6,7 @@
 	// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 	if(!isset($_SESSION["id"])){
     var_dump($_SESSION);
-		//header("Location: views/login.php");
+		header("Location: views/login.php");
 		exit(); 
 	}
 ?>

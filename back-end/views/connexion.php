@@ -1,4 +1,28 @@
+<?php
+require('../config.php');
+session_start();
 
+if (isset($_POST['email'])){
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+        $sql="SELECT * FROM administrateur WHERE email='" . $email . "' && password = '". $password."'";
+                $db = config::getConnexion();
+                try{
+                        $query=$db->prepare($sql);
+                        $query->execute();
+                        $count=$query->rowCount();
+                        if($count==1){
+                            $user=$query->fetch(); 
+                            $_SESSION['id'] = $user['id'];
+                            header('Location:../dist/index.php');
+                        }
+                }
+                catch (Exception $e){
+                    die('Erreur: '.$e->getMessage());
+                }
+    } 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,19 +92,3 @@
         </div>
     </body>
 </html>           
-
-<?php
-    include_once '../Model/patient.php';
-    include_once '../Controller/patientC.php';
-    
-    
-    if (
-        $_POST["email"]=='behija.benghorbel@esprit.tn' && 
-        $_POST["password"]=='12345678'
-    ) { 
-        
-            header('Location:../dist/index.html');
-        }
-        
-     
-?>

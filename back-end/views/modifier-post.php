@@ -1,102 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>YANA</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="../assets/img/logo.png" rel="icon">
-  <link href="../assets/img/logo.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Medilab - v2.0.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-  <!-- ======= Top Bar ======= -->
-  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-    <div class="container d-flex">
-      <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">yana.tn@esprit.tn</a>
-        <i class="icofont-phone"></i> +216 94 366 666
-        <i class="icofont-google-map"></i> tunis , araiana essoghra technopole ghazela
-      </div>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="#" class="skype"><i class="icofont-skype"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="index.html">YANA</h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-            <li class="active"><a href="../index.html">Home</a></li>
-            <li><a href="developement_p.html">Development Personelle</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="forum.php">Blog</a></li>
-            <li><a href="#doctors">Doctors</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-			<!-- header-area-end -->
-			<!-- breadcrumbs-area-start -->
-			<div class="breadcrumbs-area">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="breadcrumb-content text-center">
-								<h2>blog</h2>
-								<ul>
-									<li><a href="#">Home /</a></li>
-									<li class="active"><a href="#">blog</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">BACK END YANA</a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    
+                        <a class="dropdown-item" href="../views/connexion.php">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Layouts
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                           
+                            
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="../views/forum.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Blog
+                            </a>
+                            <a class="nav-link" href="../views/afficherPatient.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        YANA admin groupe 3
+                    </div>
+                </nav>
 			</div>
-			<!-- breadcrumbs-area-end -->
-			<!-- shop-main-area-start -->
+			<div id="layoutSidenav_content">
 			<div class="shop-main-area">
 				<!-- cart-main-area-start -->
 				<?php include_once '../controller/ForumM.php';
@@ -157,88 +137,28 @@
 			</div>
 				
 			</div>
-			<!-- ======= Footer ======= -->
-			<footer id="footer">
-
-<div class="footer-top">
-  <div class="container">
-	<div class="row">
-
-	  <div class="col-lg-3 col-md-6 footer-contact">
-		<h3>YANA</h3>
-		<p>
-		  ESPRIT <br>
-		  Ariana sghira, 2080<br>
-		  Tunisia <br><br>
-		  <strong>Phone:</strong> +216 94 366 666<br>
-		  <strong>Email:</strong> yana.tn@esprit.tn<br>
-		</p>
-	  </div>
-
-	  <div class="col-lg-2 col-md-6 footer-links">
-		<h4>Useful Links</h4>
-		<ul>
-		<li><i class="bx bx-chevron-right"></i> <a href="../index.html">Home</a></li>
-		<li><i class="bx bx-chevron-right"></i> <a href="developement_p.html">Development Personelle</a></li>
-		<li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
-		<li><i class="bx bx-chevron-right"></i> <a href="forum.php">Blog</a></li>
-		<li><i class="bx bx-chevron-right"></i> <a href="#doctors">Doctors</a></li>
-		<li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
-	  </ul>
-	  </div>
-
-	  <div class="col-lg-4 col-md-6 footer-newsletter">
-		<h4>Join Our Newsletter</h4>
-		<p>Pour recevoir toutes les noveautes medicales</p>
-		<form action="" method="post">
-		  <input type="email" name="email"><input type="submit" value="Subscribe">
-		</form>
-	  </div>
-
-	</div>
-  </div>
-</div>
-
-<div class="container d-md-flex py-4">
-
-  <div class="mr-md-auto text-center text-md-left">
-	<div class="copyright">
-	  &copy; Copyright <strong><span>YANA</span></strong>. All Rights Reserved
-	</div>
-	<div class="credits">
-	  <!-- All the links in the footer should remain intact. -->
-	  <!-- You can delete the links only if you purchased the pro version. -->
-	  <!-- Licensing information: https://bootstrapmade.com/license/ -->
-	  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
-	</div>
-  </div>
-  <div class="social-links text-center text-md-right pt-3 pt-md-0">
-	<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-	<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-	<a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-	<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-	<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-  </div>
-</div>
-</footer><!-- End Footer -->
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-<script src="../assets/vendor/php-email-form/validate.js"></script>
-<script src="../assets/vendor/venobox/venobox.min.js"></script>
-<script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-<script src="../assets/vendor/counterup/counterup.min.js"></script>
-<script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-<!-- Template Main JS File -->
-<script src="../assets/js/main.js"></script>
-
-</body>
-
+			<footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; YANA 2020</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+    </body>
 </html>

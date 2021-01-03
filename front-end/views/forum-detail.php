@@ -227,12 +227,12 @@
 									<h3>Publication Recente</h3>
 									<div class="sidebar-post">
 										
-										
+		
 										<?php foreach ($posts as $row) {?>
 										<!-- single-post-start -->
 										<div class="single-post">
 											<div class="post-img">
-												<a href="#"><img src="<?php echo $row['image']; ?>" alt="post" /></a>
+												<a href="#"><img width="40" src="<?php echo $row['image']; ?>" alt="post" /></a>
 											</div>
 											<div class="post-text">
 												<h4><a href="#"><?php echo $row['titre']; ?></a></h4>

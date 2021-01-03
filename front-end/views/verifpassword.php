@@ -1,69 +1,27 @@
 <?php
 
-require('../config.php');
+    require('../config.php');
+    session_start();
 
-session_start();
-	
+    if (isset($_POST['code'])){
 
-if (isset($_POST['code'])){
-
-    
-    
-    $email=$_SESSION['email'] ;
-    $code=$_POST['code'];
-    //$id=$_SESSION['id'] ;
-    $sql="SELECT * FROM patient WHERE email='" . $email . "' && code = '". $code."'";
-			$db = config::getConnexion();
-			try{
-				$query=$db->prepare($sql);
-				$query->execute();
-                $count=$query->rowCount();
-                if($count==1){
-                   $user=$query->fetch(); 
-                  // $_SESSION['login'] = $user['login'];
-                //$_SESSION['id'] = $user['id'];
-                header("Location: nouveaupassword.php");
+        $email=$_SESSION['email'] ;
+        $code=$_POST['code'];
+        $sql="SELECT * FROM patient WHERE email='" . $email . "' && code = '". $code."'";
+                $db = config::getConnexion();
+                try{
+                    $query=$db->prepare($sql);
+                    $query->execute();
+                    $count=$query->rowCount();
+                    if($count==1){
+                        $user=$query->fetch(); 
+                        header("Location: nouveaupassword.php");
+                    }  
                 }
-                
-                //$_SESSION['login'] = $user['login'];
-                //$_SESSION['id'] = $user['id'];
-                
-        //var_dump($_SESSION);
-			}
-			catch (Exception $e){
-				die('Erreur: '.$e->getMessage());
-            }
-        } 
-
-
-
-    
-
-
-
-    // $email = stripslashes($_REQUEST['email']);
-	// $email = mysqli_real_escape_string($conn, $email);
-	// $code = stripslashes($_REQUEST['code']);
-	// $code = mysqli_real_escape_string($conn, $code);
-	// $query="SELECT * FROM patient WHERE email='" . $email . "' && code = '". $code."'";
-    
-	// $result = mysqli_query($conn,$query) or die(mysql_error());
-	// $rows = mysqli_num_rows($result);
-	// if($rows==1){
-    //     $_SESSION['email'] = $email;
-        
-	//     header("Location: nouveaupassword.php");
-	// }else{
-	// 	$message = "L'email est incorrect.";
-	// }
-
-
-
-  
-
-
-
-
+                catch (Exception $e){
+                    die('Erreur: '.$e->getMessage());
+                }
+    } 
 
 ?>
 
@@ -72,17 +30,57 @@ if (isset($_POST['code'])){
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>vérification</title>
-        <link href="styles.css" rel="stylesheet"/>
-        
+        <title>vérification du code</title>
+        <meta content="" name="descriptison">
+        <meta content="" name="keywords">
+        <link href="../assets/img/logo.png" rel="icon">
+        <link href="../assets/img/logo.png" rel="apple-touch-icon">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+        <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet">
     </head>
 
-    <body class="bg-primary">
-    
-        
-        <div id="error">
-            <?//php echo $error; ?>
+    <body>
+        <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+            <div class="container d-flex">
+                <div class="contact-info mr-auto">
+                    <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">yana.tn@esprit.tn</a>
+                    <i class="icofont-phone"></i> +216 94 366 666
+                    <i class="icofont-google-map"></i> tunis , araiana essoghra technopole ghazela
+                </div>
+                <div class="social-links">
+                    <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                    <a href="#" class="skype"><i class="icofont-skype"></i></a>
+                    <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+                </div>
+            </div>
         </div>
+        <header id="header" class="fixed-top">
+            <div class="container d-flex align-items-center">
+            <h1 class="logo mr-auto"><a href="../index.html">YANA</h1>
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="../index.html">Home</a></li>
+                    <li><a href="developement_p.html">Development Personelle</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="forum.php">Blog</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+        <section></section>
+
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <div class="container">
@@ -95,8 +93,6 @@ if (isset($_POST['code'])){
                                 <div class="card-body">
                                     <form action="" method="POST">
                                         <table  align="center">
-                                     
-                                            
                                             <tr>
                                                 <td>
                                                     <label class="small mb-1" for="code">code de verification:</label>
@@ -105,17 +101,11 @@ if (isset($_POST['code'])){
                                                     <input class="form-control" type="int" name="code" id="code"  placeholder="Entrer le code">
                                                 </td>
                                             </tr>
-
-                                            
-
                                 </div>
                                             <tr>
                                                 <td></td>
-                                                <td>
-                                                
-                                                    <input class="btn btn-primary btn-block" type="submit" value="Envoyer" > 
-                                                   
-
+                                                <td>                                     
+                                                    <input class="btn btn-primary btn-block" type="submit" value="Envoyer" >
                                                 </td>
                                             </tr>
                                             

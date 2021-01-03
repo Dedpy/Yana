@@ -115,8 +115,6 @@
 											include_once '../controller/ForumM.php';
 											$post=new ForumManage();
 							    			$posts=$post->afficherPost();
-				
-											
 											
 											?>
 							</div>
@@ -139,7 +137,7 @@
 										<!-- single-blog-2-start -->
 										<div class="single-blog single-blog-2 mb-30">
 											<div class="blog-2-img">
-												<!-- <a href="blog-details.html"><img src="<?php //echo $row['image']; ?>" alt="man" /></a>-->
+												<a href="blog-details.html"><img src="<?php echo $row['image']; ?>" alt="man" /></a>
 											</div>
 											<div class="blog-2-content blog-content">
 												<?php 

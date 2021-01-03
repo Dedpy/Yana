@@ -150,16 +150,7 @@
 													<i class="fa fa-list-alt"></i>Categorys: <a href="#"><?php echo $val['categorie'];?></a>
 												</div>
 											</div>
-											<?php } $id=$_GET['id'];?>	
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-												<div class="user-share">
-													
-													<ul>
-														<li><a href="supprimer-post.php?id=<?php echo $_GET['id']; ?>"><i>Supprimer</i></a></li>
-														<li><a href="modifier-post.php?id=<?php echo $_GET['id']; ?>"><i>Modifier</i></a></li>
-													</ul>
-												</div>
-											</div>		
+											<?php } $id=$_GET['id'];?>		
 										</div>
 									</div>
 									<div class="next-prev-area">
@@ -178,7 +169,7 @@
 									<!-- single-comments-start -->
 									<div class="single-comments single-comments-2">
 										<div class="comment-img">
-											<img src="img/blog/profil.png" alt="man" />
+											<img src="../assets/img/blog/profil.png" width="40" alt="man" />
 										</div>
 										<div class="comment-text">
 											<a href="#"><?php echo $val2['nom']; ?></a>
@@ -193,16 +184,6 @@
                                             $monthName = date("F", mktime(0, 0, 0, $month, 10));?>
 											<span><?php echo $monthName." ".$day.", ".$year." at ".$time1; ?></span>
 											<p><?php echo $val2['comment']; ?></p>
-											
-
-												<div class="user-share">
-													
-													<ul>
-														<li><a href="supprimer-comment.php?id=<?php echo $val2['id']."&id_post=".$_GET['id']; ?>"><i>Supprimer</i></a></li>
-														
-													</ul>
-												</div>
-											
 										</div>
 									</div>
 									<?php } ?>
@@ -217,7 +198,7 @@
 											<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Entrez votre commentaire *"></textarea>
 											<input name="id_client"  type="hidden" value="01" />
 											<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
-											<input name="nom"  type="hidden" value="admin" />
+											<input name="nom"  type="hidden" value="<?php echo $_SESSION['login']; ?>" />
 
 									</div>
 									

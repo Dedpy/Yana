@@ -72,7 +72,6 @@
                     <li class="active"><a href="../index.html">Home</a></li>
                     <li><a href="developement_p.html">Development Personelle</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="forum.php">Blog</a></li>
                     <li><a href="#doctors">Doctors</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>

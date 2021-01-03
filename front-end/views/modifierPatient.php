@@ -23,6 +23,7 @@
             !empty($_POST["login"]) && 
             !empty($_POST["password"])
         ) {
+          if( preg_match ( " /^[a-zA-Z]{2,}$/ " , $_POST['nom'] )==1 && preg_match (" /^[a-zA-Z]{2,}$/ ", $_POST['prenom'] )==1 && preg_match ( ' /^.+@.+\.[a-z]{2,}$/ ' , $_POST['email'] )==1 && preg_match ( ' #^[0-9]{8}+$# ', $_POST['telephone'])==1 ){
             $user = new patient(
                 $_POST['nom'],
                 $_POST['prenom'], 
@@ -35,22 +36,26 @@
             
             $patientC->modifierPatient($user, $_GET['id']);
            header('refresh:5;url=../index.php');
-        }
-        else
-            $error = "Missing information";
+          }
+          else {
+            echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>" ;echo "<br>";
+            if(preg_match ( " /^[a-zA-Z]{2,}$/ " , $_POST['nom'] )==0){echo 'Le nom doit contenir que des lettres '; echo "<br>";}
+            if(preg_match ( " /^[a-zA-Z]{2,}$/ " , $_POST['prenom'] )==0){echo 'Le prenom doit contenir que des lettres '; echo "<br>";}
+            if(preg_match ( ' /^.+@.+\.[a-zA-Z]{2,}$/ '  , $_POST['email'] )==0){echo 'L email est incorrect '; echo "<br>";} 
+            if(preg_match ( " /^[0-9]{8}$/ " , $_POST['telephone'] )==0){echo 'Le numero de telephone doit contenir 8 chiffres '; echo "<br>";}
+            
+          }
+      }
+      else{echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>" ;echo "<br>";
+            echo "Missing information";}
 	}
 
 ?>
 
 <?php
-//include "../controller/patientC.php";
-//require 'vendor/autoload.php';
-	// Initialiser la session
 	session_start();
-	// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 	if(!isset($_SESSION["id"])){
     var_dump($_SESSION);
-		//header("Location: views/login.php");
 		exit(); 
 	}
 ?>
@@ -59,99 +64,64 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Modifier mon profil </title>
+        <meta content="" name="descriptison">
+        <meta content="" name="keywords">
+        <link href="../assets/img/logo.png" rel="icon">
+        <link href="../assets/img/logo.png" rel="apple-touch-icon">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+        <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet">
+    </head>
 
-  <title>YANA </title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Medilab - v2.0.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-  <!-- ======= Top Bar ======= -->
-  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-    <div class="container d-flex">
-      <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">yana.tn@esprit.tn</a>
-        <i class="icofont-phone"></i> +216 94 366 666
-        <i class="icofont-google-map"></i> tunis , araiana essoghra technopole ghazela
-      </div>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="#" class="skype"><i class="icofont-skype"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-<div class="container d-flex align-items-center">
-  <h6>Bienvenue <?php echo $_SESSION['login']; ?>!</h6>
-    <a href="../views/modifierPatient.php?id=<?PHP echo $_SESSION['id']; ?>" class="appointment-btn scrollto"> Modifier </a>
-    <a href="../views/logout.php" class="appointment-btn scrollto">Déconnexion</a>
-</div>
-    <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="../index.php">YANA</h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="../index.php">Home</a></li>
-          <li><a href="../views/forum.php">Blog</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#doctors">Doctors</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Planifier un RDV</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
-
-  
-<body class="bg-primary">
-		<!-- <div><a class="btn btn-primary " href="afficherPatient.php">Retour à la liste</a></div> --> 
-        <div id="error">
-            <?php echo $error; ?>
+    <body>
+        <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+            <div class="container d-flex">
+                <div class="contact-info mr-auto">
+                    <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">yana.tn@esprit.tn</a>
+                    <i class="icofont-phone"></i> +216 94 366 666
+                    <i class="icofont-google-map"></i> tunis , araiana essoghra technopole ghazela
+                </div>
+                <div class="social-links">
+                    <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                    <a href="#" class="skype"><i class="icofont-skype"></i></a>
+                    <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+                </div>
+            </div>
         </div>
+        <header id="header" class="fixed-top">
+            <div class="container d-flex align-items-center">
+            <h1 class="logo mr-auto"><a href="../index.html">YANA</h1>
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="../index.html">Home</a></li>
+                    <li><a href="developement_p.html">Development Personelle</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="forum.php">Blog</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+        <section></section>
 		<?php
 			if (isset($_GET['id'])){
-				$user = $patientC->recupererPatient1($_GET['id']);
-				
+				$user = $patientC->recupererPatient1($_GET['id']);	
 		?>
-		<div id="layoutAuthentication">
+		    <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -195,7 +165,7 @@
                                                     <label class="small mb-1" for="telephone">telephone:</label>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="text" name="telephone" id="telephone" maxlength="20" value = "<?php echo $user->telephone; ?>">
+                                                    <input class="form-control" type="text" name="telephone" id="telephone" length="8" value = "<?php echo $user->telephone; ?>">
                                                 </td>
                                             </tr>
                                             
@@ -204,7 +174,7 @@
                                                     <label class="small mb-1" for="email">Adresse mail:</label>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="email" name="email" id="email" pattern=".+@gmail.com|.+@esprit.tn" value = "<?php echo $user->email; ?>">
+                                                    <input class="form-control" type="email" name="email" id="email" pattern=".+@gmail.com|.+@esprit.tn|.+@yahoo.fr|.+yahoo.com" value = "<?php echo $user->email; ?>">
                                                 </td>
                                             </tr>
 
@@ -225,9 +195,6 @@
                                                     <input class="form-control" type="password" name="password" id="password" value = "<?php echo $user->password; ?>">
                                                 </td>
                                             </tr>
-
-                                    
-
                                 </div>
                                             <tr>
                                                 <td></td>
@@ -254,7 +221,6 @@
 		}
         ?>
         
-<!-- ======= Footer ======= -->
 <footer id="footer">
 <div class="footer-top">
   <div class="container">
@@ -297,10 +263,6 @@
 	  &copy; Copyright <strong><span>YANA</span></strong>. All Rights Reserved
 	</div>
 	<div class="credits">
-	  <!-- All the links in the footer should remain intact. -->
-	  <!-- You can delete the links only if you purchased the pro version. -->
-	  <!-- Licensing information: https://bootstrapmade.com/license/ -->
-	  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
 	</div>
   </div>
   <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -312,10 +274,10 @@
   </div>
 </div>
 </footer>
-<!-- End Footer -->
+
 <div id="preloader"></div>
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-<!-- Vendor JS Files -->
+
 <script src="../assets/vendor/jquery/jquery.min.js"></script>
 <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -327,5 +289,5 @@
 <script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <!-- Template Main JS File -->
 <script src="../assets/js/main.js"></script>
-</body>
+    </body>
 </html>

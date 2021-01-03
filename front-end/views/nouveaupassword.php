@@ -1,69 +1,27 @@
 <?php
 
-require('../config.php');
+    require('../config.php');
+    session_start();
 
-session_start();
-	
-//var_dump($_SESSION);
-if (isset($_POST['password'])){
-
-
-    $email=$_SESSION['email'] ;
-    //var_dump($_SESSION);
-    $password=$_POST['password'];
-    $sql="UPDATE patient SET password= '" . $password . "' WHERE email='" . $email . "'";
-			$db = config::getConnexion();
-			try{
-				$query=$db->prepare($sql);
-				$query->execute();
-
-				//$user=$query->fetch();
-                
-               
-                //$_SESSION['id'] = $user['id'];
-                
-
-            header("Location: login.php");
-        //var_dump($_SESSION);
-			}
-			catch (Exception $e){
-				die('Erreur: '.$e->getMessage());
+    if (isset($_POST['password'])){
+        $email=$_SESSION['email'] ;
+        $password=$_POST['password'];
+        if($_POST['confpassword']==$password){
+            $sql="UPDATE patient SET password= '" . $password . "' WHERE email='" . $email . "'";
+            $db = config::getConnexion();
+            try{
+                $query=$db->prepare($sql);
+                $query->execute();
+                header("Location: login.php");
             }
-        } 
-
-
-
-
-
-
-
-    
-    // $email = stripslashes($_REQUEST['email']);
-	// $email = mysqli_real_escape_string($conn, $email);
-	
-	// $query="SELECT * FROM patient WHERE email='" . $email . "'";
-    
-	// $result = mysqli_query($conn,$query) or die(mysql_error());
-    // $rows = mysqli_num_rows($result);
-    
-	// if($rows==1){
-    //     $_SESSION['email'] = $email;
-    //     $password=$_POST['password'];
-    //     $query1="UPDATE patient SET password= '" . $password . "' WHERE email='" . $email . "'";
-    //     $result1 = mysqli_query($conn,$query1) or die(mysql_error());
-	//     header("Location: login.php");
-	// }else{
-	// 	$message = "L'email est incorrect.";
-	// }
-
-
-
-  
-
-
-
-
-
+            catch (Exception $e){
+                die('Erreur: '.$e->getMessage());
+            }
+        }
+        else {
+                echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";
+                echo 'Verifier votre mot de passe ';}
+    } 
 ?>
 
 
@@ -76,16 +34,56 @@ if (isset($_POST['password'])){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nouveau mot de passe</title>
-        <link href="styles.css" rel="stylesheet"/>
-        
+        <meta content="" name="descriptison">
+        <meta content="" name="keywords">
+        <link href="../assets/img/logo.png" rel="icon">
+        <link href="../assets/img/logo.png" rel="apple-touch-icon">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+        <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet">
     </head>
 
-    <body class="bg-primary">
-    
-        
-        <div id="error">
-            <?//php echo $error; ?>
+    <body>
+        <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+            <div class="container d-flex">
+                <div class="contact-info mr-auto">
+                    <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">yana.tn@esprit.tn</a>
+                    <i class="icofont-phone"></i> +216 94 366 666
+                    <i class="icofont-google-map"></i> tunis , araiana essoghra technopole ghazela
+                </div>
+                <div class="social-links">
+                    <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                    <a href="#" class="skype"><i class="icofont-skype"></i></a>
+                    <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+                </div>
+            </div>
         </div>
+        <header id="header" class="fixed-top">
+            <div class="container d-flex align-items-center">
+            <h1 class="logo mr-auto"><a href="../index.html">YANA</h1>
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="../index.html">Home</a></li>
+                    <li><a href="developement_p.html">Development Personelle</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="forum.php">Blog</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+        <section></section>
+     
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <div class="container">
@@ -142,22 +140,3 @@ if (isset($_POST['password'])){
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

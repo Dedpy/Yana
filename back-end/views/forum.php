@@ -93,9 +93,6 @@
 											include_once '../controller/ForumM.php';
 											$post=new ForumManage();
 							    			$posts=$post->afficherPost();
-				
-											
-											
 											?>
 							</div>
 						</div>

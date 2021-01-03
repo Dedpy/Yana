@@ -81,7 +81,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="../views/afficherPatient.php">Table Patients</a>
-                                    <a class="nav-link" href="../views/afficherMed.php">Tables Medecins</a>
+                                    <a class="nav-link" href="../views/afficherMedecin.php">Tables Medecins</a>
                                 </nav>
                             </div>
                         </div>

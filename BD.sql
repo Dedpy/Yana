@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 08, 2020 at 11:08 AM
+-- Generation Time: Jan 03, 2021 at 07:08 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -30,11 +30,17 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `administrateur`;
 CREATE TABLE IF NOT EXISTS `administrateur` (
-  `id_ad` int(11) NOT NULL AUTO_INCREMENT,
-  `login_ad` varchar(250) NOT NULL,
-  `password_ad` varchar(250) NOT NULL,
-  PRIMARY KEY (`id_ad`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `administrateur`
+--
+
+INSERT INTO `administrateur` (`id`, `email`, `password`) VALUES
+(1, 'admin@esprit.tn', 'admin');
 
 -- --------------------------------------------------------
 
@@ -53,15 +59,16 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   PRIMARY KEY (`id`),
   KEY `id_post` (`id_post`),
   KEY `id_patient` (`id_patient`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `commentaire`
 --
 
 INSERT INTO `commentaire` (`id`, `nom`, `comment`, `date_com`, `id_patient`, `id_post`) VALUES
-(4, 'admin', 'hekkk', '2020-12-08 11:26:02', 1, 1),
-(3, 'admin', 'chbik labes', '2020-12-08 11:23:29', 1, 1);
+(18, 'behija', 'Merci wassim!', '2021-01-03 19:54:30', 1, 35),
+(17, 'wassim', 'Merci cher administrateur.', '2021-01-03 19:46:13', 1, 35),
+(16, 'admin', 'Bravo wassim!', '2021-01-03 19:45:40', 1, 35);
 
 -- --------------------------------------------------------
 
@@ -86,16 +93,21 @@ CREATE TABLE IF NOT EXISTS `hitorique_consultation` (
 
 DROP TABLE IF EXISTS `medecin`;
 CREATE TABLE IF NOT EXISTS `medecin` (
-  `id_med` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_med` varchar(250) NOT NULL,
-  `prenom_med` varchar(250) NOT NULL,
-  `email_med` varchar(250) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(250) NOT NULL,
+  `prenom` varchar(250) NOT NULL,
   `diplome` varchar(250) NOT NULL,
   `adresse` varchar(250) NOT NULL,
-  `login_med` varchar(250) NOT NULL,
-  `password_med` varchar(250) NOT NULL,
-  PRIMARY KEY (`id_med`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `email` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `medecin`
+--
+
+INSERT INTO `medecin` (`id`, `nom`, `prenom`, `diplome`, `adresse`, `email`) VALUES
+(2, 'amine', 'boubaker', 'psycologue', 'Rue Tahrir', 'amine.boubaker@esprit.tn');
 
 -- --------------------------------------------------------
 
@@ -113,8 +125,17 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `email` varchar(250) NOT NULL,
   `login` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
+  `code` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`id`, `nom`, `prenom`, `date_naissance`, `telephone`, `email`, `login`, `password`, `code`) VALUES
+(3, 'wassim', 'benromdhane', '1998-01-09', 94366666, 'wassimbenr@gmail.com', 'wassim', 'wassim', NULL),
+(4, 'behija', 'benghorbel', '1999-01-11', 92582051, 'behija.benghorbel@esprit.tn', 'behija', 'behija', 5002);
 
 -- --------------------------------------------------------
 
@@ -133,14 +154,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   `id_patient` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_commentaire` (`id_patient`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `post`
 --
 
 INSERT INTO `post` (`id`, `titre`, `categorie`, `post`, `image`, `date_post`, `id_patient`) VALUES
-(25, 'Depression', 'Depression', 'labes labes', 'img/blog/general.png', '2020-12-08 11:23:10', 1);
+(35, 'Les psychologues en renforts nâ€™arriveront pas avant la fin janvier', 'Maladie mentale', 'Les renforts en santÃ© mentale tardent Ã  se dÃ©ployer au QuÃ©bec. Il faudra attendre Ã  la fin du mois de janvier avant que des psychologues du secteur privÃ© puissent sâ€™ajouter aux ressources existantes pour rÃ©duire les listes dâ€™attente.\r\nEn entrevue, le ministre dÃ©lÃ©guÃ© Ã  la SantÃ©, Lionel Carmant, a reconnu lundi que Â« câ€™est plus long Â» que ce quâ€™il Â« aurait souhaitÃ© Â».\r\nDeux jours aprÃ¨s lâ€™attaque de lâ€™Halloween dans le Vieux-QuÃ©bec, le ministre avait promis des investissements supplÃ©mentaires de 100 millions de dollars en santÃ© mentale. Le plan incluait lâ€™ajout de 350 sentinelles psychosociales en prÃ©vention et la mise Ã  contribution de 800 psychologues du secteur privÃ©.\r\nCes derniers, disait-il, allaient aider leurs collÃ¨gues du rÃ©seau public Ã  Â« vider les listes dâ€™attente Â» qui comptaient alors 16 000 noms.\r\nOr lors de lâ€™Ã©tude des crÃ©dits le 4 dÃ©cembre, le ministre a dÃ» concÃ©der que les renforts nâ€™arriveraient pas avant la fin du mois de janvier, et que le guichet dâ€™accÃ¨s contenait dÃ©sormais non plus 16 000, mais 18 300 noms.', '../assets/img/blog/general.png', '2021-01-03 19:44:16', 3);
 
 -- --------------------------------------------------------
 
@@ -185,13 +206,6 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
   `hash` varchar(255) NOT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `subscribe`
---
-
-INSERT INTO `subscribe` (`email`, `hash`) VALUES
-('', 'd41d8cd98f00b204e9800998ecf8427e');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

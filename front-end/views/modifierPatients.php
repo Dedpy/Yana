@@ -23,6 +23,7 @@
             !empty($_POST["login"]) && 
             !empty($_POST["password"])
         ) {
+            if( preg_match ( " /^[a-zA-Z]{2,}$/ " , $_POST['nom'] )==1 && preg_match (" /^[a-zA-Z]{2,}$/ ", $_POST['prenom'] )==1 && preg_match ( ' /^.+@.+\.[a-z]{2,}$/ ' , $_POST['email'] )==1 && preg_match ( ' #^[0-9]{8}+$# ', $_POST['telephone'])==1 ){
             $user = new patient(
                 $_POST['nom'],
                 $_POST['prenom'], 
@@ -35,7 +36,16 @@
             
             $patientC->modifierPatient($user, $_GET['id']);
            // header('Location:afficherPatient.php');
+        }else {
+            echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";
+            if($count!=0){echo 'L email existe deja '; echo "<br>";}
+            if(preg_match ( " /^[a-zA-Z]{2,}$/ " , $_POST['nom'] )==0){echo 'Le nom doit contenir que des lettres '; echo "<br>";}
+            if(preg_match ( " /^[a-zA-Z]{2,}$/ " , $_POST['prenom'] )==0){echo 'Le prenom doit contenir que des lettres '; echo "<br>";}
+            if(preg_match ( ' /^.+@.+\.[a-zA-Z]{2,}$/ '  , $_POST['email'] )==0){echo 'L email est incorrect '; echo "<br>";} 
+            if(preg_match ( " /^[0-9]{8}$/ " , $_POST['telephone'] )==0){echo 'Le numero de telephone doit contenir 8 chiffres '; echo "<br>";}
+            
         }
+    }
         else
             $error = "Missing information";
 	}
@@ -44,18 +54,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Modifier Utilisateur</title>
+		<title>Modifier mon compte</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
-	<body class="bg-primary">
-		<!-- <div><a class="btn btn-primary " href="afficherPatient.php">Retour à la liste</a></div> -->
-        <hr>
-        
+	<body >
 		<?php
 			if (isset($_GET['id'])){
-				$user = $patientC->recupererPatient1($_GET['id']);
-				
+				$user = $patientC->recupererPatient1($_GET['id']);	
 		?>
 		<div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -101,7 +107,7 @@
                                                     <label class="small mb-1" for="telephone">telephone:</label>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="text" name="telephone" id="telephone" maxlength="20" value = "<?php echo $user->telephone; ?>">
+                                                    <input class="form-control" type="text" name="telephone" id="telephone" length="8" value = "<?php echo $user->telephone; ?>">
                                                 </td>
                                             </tr>
                                             
@@ -110,7 +116,7 @@
                                                     <label class="small mb-1" for="email">Adresse mail:</label>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="email" name="email" id="email" pattern=".+@gmail.com|.+@esprit.tn" value = "<?php echo $user->email; ?>">
+                                                    <input class="form-control" type="email" name="email" id="email" pattern=".+@gmail.com|.+@esprit.tn|.+@yahoo.fr|.+yahoo.com" value = "<?php echo $user->email; ?>">
                                                 </td>
                                             </tr>
 

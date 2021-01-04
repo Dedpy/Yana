@@ -136,7 +136,7 @@
 										<!-- single-blog-2-start -->
 										<div class="single-blog single-blog-2 mb-30">
 											<div class="blog-2-img">
-												<a href="blog-details.html"><img width="40" src="<?php echo $row['image']; ?>" alt="man" /></a>
+												<a href=""><img width="40" src="<?php echo $row['image']; ?>" alt="man" /></a>
 											</div>
 											<div class="blog-2-content blog-content">
 												<?php 

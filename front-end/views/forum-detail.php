@@ -142,7 +142,6 @@
 									<br />
 									
 									
-									
 									<div class="user-info">
 										<div class="row">
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -184,7 +183,8 @@
                                             $monthName = date("F", mktime(0, 0, 0, $month, 10));?>
 											<span><?php echo $monthName." ".$day.", ".$year." at ".$time1; ?></span>
 											<p><?php echo $val2['comment']; ?></p>
-										</div>
+											
+								</div>
 									</div>
 									<?php } ?>
 									<!-- single-comments-end -->
@@ -196,7 +196,7 @@
 									<div class="single-form">
 										<form action="ajouter-commentaire.php" method="POST">
 											<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Entrez votre commentaire *"></textarea>
-											<input name="id_client"  type="hidden" value="01" />
+											<input name="id_client"  type="hidden" value="<?php echo $_SESSION['id']; ?>" />
 											<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
 											<input name="nom"  type="hidden" value="<?php echo $_SESSION['login']; ?>" />
 

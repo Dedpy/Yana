@@ -88,7 +88,7 @@
         <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
         <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
         <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-        <link href="../assets/css/style.css" rel="stylesheet">
+        <link href="../assets/css/style1.css" rel="stylesheet">
     </head>
 
     <body>

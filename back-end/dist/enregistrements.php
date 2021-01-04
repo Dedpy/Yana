@@ -1,9 +1,19 @@
-<?PHP
-	include "../controller/patientC.php";
-
-	$patientC=new patientC();
-	$listeUsers=$patientC->afficherPatient();
+<?php
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=yana', 'root', '');    
+   for($i=1;$i<500;$i++){if (isset($_POST[$i])){
+    $lien =htmlspecialchars($_POST['changement']);
+    $lien=str_replace("view","preview",$lien);
+    $sql = "UPDATE enregistrements SET lien='$lien' WHERE id='$i'";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute();header("Location:enregistrements.php");  }
+    $ch='a'.$i;
+    if (isset($_POST[$ch])){
+        $sql = "DELETE FROM enregistrements WHERE id='$i'";
+        $stmt = $bdd->prepare($sql);
+        $stmt->execute();header("Location:enregistrements.php");
+       }} 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,7 +62,7 @@
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link" href="../dist/specialites.php">
+                            <a class="nav-link" href="specialites.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Spécialités
                             </a>
@@ -75,7 +85,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Blog
                             </a>
-                            <a class="nav-link" href="../dist/enregistrements.php">
+                            <a class="nav-link" href="enregistrements.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Les enregistrements des RDV
                             </a>
@@ -101,75 +111,41 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Tables</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="../dist/index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                DataTable Example
-                            </div>
+                    <?php
+                        $bdd = new PDO('mysql:host=127.0.0.1;dbname=yana', 'root', '');
+if (isset($_POST['ajouter'])){
+    
+  $enregistrements =htmlspecialchars($_POST['enregistrements']);
+  $enregistrements=str_replace("view","preview",$enregistrements);
+  try {
+    $insertmbr = $bdd->prepare("INSERT INTO enregistrements(lien) VALUES(?)");
+    $insertmbr->execute(array($enregistrements));
+  } catch(PDOException $e) {
+    $e->getMessage();
+  }}
+  try {
+  $req= $bdd->prepare("SELECT * FROM enregistrements");
+  $req->execute();
+  $result = $req->fetchAll();
+  }catch(PDOException $e) {echo '<h1>';echo $e->getMessage();echo '</h1>';}echo'<div style="text-align:center">'; echo '<h1 style="text-align:center">';
+  foreach ($result as $row) {
+      $ch='<form action="" method="POST"><iframe src="'.$row['lien'].'" width="640" height="480"></iframe><br>'.'<input name="changement"><button type="submit" class="button button-block" name='.$row['id'].' value="register">Modifier</button><button type="submit" class="button button-block" name=a'.$row['id'].' value="register">Supprimer</button><br></form>';
+   echo $ch;
 
+} echo ' <form action="" method="POST">
+<label class="doudou"><br>
+‎ ‎ Déposer un lien:</label><br><input name="enregistrements"><br>
 
-							<div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-											<th>Id</th>
-				<th>Nom</th>
-				<th>Prenom</th>
-				<th>Date de naissance</th>
-				<th>telephone</th>
-				<th>Email</th>
-				<th>Login</th>
-				<th>Supprimer</th>
-		
-			</tr>
-
-			<?PHP
-				foreach($listeUsers as $user){
-			?>
-				<tr>
-					<td><?PHP echo $user['id']; ?></td>
-					<td><?PHP echo $user['nom']; ?></td>
-					<td><?PHP echo $user['prenom']; ?></td>
-					<td><?PHP echo $user['date_naissance']; ?></td>
-					<td><?PHP echo $user['telephone']; ?></td>
-					<td><?PHP echo $user['email']; ?></td>
-					<td><?PHP echo $user['login']; ?></td>
-					<td>
-						<form method="POST" action="supprimerPatient.php">
-						<input type="submit" name="supprimer" value="supprimer">
-						<input type="hidden" value=<?PHP echo $user['id']; ?> name="id">
-						</form>
-					</td>
-					
-				</tr>
-			<?PHP
-				}
-			?>
-
-</tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
+<button type="submit" class="button button-block" name="ajouter" value="register">Ajouter</button>
+</form>';
+echo '</h1></div>';?>
+                   
+        </div>
+       
+        <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                            <div class="text-muted">Copyright &copy; YANA 2020</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
@@ -183,56 +159,11 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 <?php
    
-     require "../front-end/config.php";
+     require "../../front-end/config.php";
 
 $to      = $_POST['to'];
 

@@ -1,5 +1,6 @@
 <?php
     session_start();
+
 	// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 	if(!isset($_SESSION["id"])){
     var_dump($_SESSION);
@@ -22,7 +23,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">BACK END YANA</a>
+            <a class="navbar-brand" href="index.php">BACK END YANA</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -50,9 +51,14 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link" href="../dist/specialites.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Spécialités
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -72,6 +78,10 @@
                             <a class="nav-link" href="../views/forum.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Blog
+                            </a>
+                            <a class="nav-link" href="../dist/enregistrements.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Les enregistrements des RDV
                             </a>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                
@@ -122,21 +132,29 @@
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Rendez-vous</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="rendezvous.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
-                        
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Traffic de notre site</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="https://analytics.google.com/analytics/web/?utm_source=marketingplatform.google.com&utm_medium=et&utm_campaign=marketingplatform.google.com%2Fabout%2Fanalytics%2F#/p256166109/reports/defaulthome?params=_u..nav%3Ddefault%26_r.0..selmet%3D%5B%22activeUsers%22%5D%26_r.0..cardDateRange%3Dtoday">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-black stretched-link" href="https://analytics.google.com/analytics/web/?utm_source=marketingplatform.google.com&utm_medium=et&utm_campaign=marketingplatform.google.com%2Fabout%2Fanalytics%2F#/p256166109/reports/defaulthome?params=_u..nav%3Ddefault%26_r.0..selmet%3D%5B%22activeUsers%22%5D%26_r.0..cardDateRange%3Dtoday">Trafic</a>
-                                        <div class="small text-black"><i class="fas fa-angle-right"></i></div>
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area mr-1"></i>
+                                        Nombre total des rendezvous
                                     </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                    <div class="card-body"><?php echo $_SESSION['nb']; ?></div>
                                 </div>
                             </div>
                             <div class="col-xl-6">
@@ -150,6 +168,7 @@
                             </div>
                         </div>
                         
+                    </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">

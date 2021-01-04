@@ -8,9 +8,21 @@
     var_dump($_SESSION);
 		header("Location: views/login.php");
 		exit(); 
-	}
+  }
+  
+  $bdd = new PDO('mysql:host=127.0.0.1;dbname=yana', 'root', '');
+for($i=1;$i<500;$i++)
+{
+try {
+$req= $bdd->prepare("SELECT * FROM specialite WHERE id='$i'");
+$req->execute();
+$result = $req->fetchAll();
+}
+catch(PDOException $e) {$e->getMessage();}
+foreach ($result as $row) {
+  if(isset($row['id'])){
+$_SESSION[$i]=$row['specialite'];}}}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +36,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -41,7 +53,7 @@
   <link href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style1.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Medilab - v2.0.0
@@ -89,10 +101,10 @@
           <li class="active"><a href="index.html">Home</a></li>
           <li><a href="views/forum.php">Blog</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="views/mesconsultations.php">Mes consumltations</a></li>
           <li><a href="#doctors">Doctors</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Planifier un RDV</a></li>
+          <li><a href="#appointment">Planifier un RDV</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -239,130 +251,70 @@
       </div>
     </section><!-- End Counts Section -->
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-heart-beat"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-drug"></i></div>
-              <h4><a href="">Sed ut perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-dna-alt-2"></i></div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-heartbeat"></i></div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-disabled"></i></div>
-              <h4><a href="">Dele cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-autism"></i></div>
-              <h4><a href="">Divera don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>
-
-        </div>
-
+<!-- ======= Appointment Section ======= -->
+<section id="appointment" class="appointment section-bg">
+      <div class="section-title">
+      <h2>Prendre un RDV</h2>
       </div>
-    </section><!-- End Services Section -->
 
-    <!-- ======= Appointment Section ======= -->
-    <section id="appointment" class="appointment section-bg">
-      <div class="container">
+      <?php 
 
-        <div class="section-title">
-          <h2>Make an Appointment</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+
+if (isset($_POST['forminscription'])){
+  if(isset($_SESSION['nb'])){$_SESSION['nb']++;}else {$_SESSION['nb']=1;}
+    $bdd = new PDO('mysql:host=127.0.0.1;dbname=yana', 'root', '');
+  $date = htmlspecialchars($_POST['date']);
+  $heure = htmlspecialchars($_POST['heure']);
+  $docteur =htmlspecialchars($_POST['docteur']);
+  $id_patient = $_SESSION['id'];
+  try {
+    
+    $insertmbr = $bdd->prepare("INSERT INTO rendezvous(date,heure,docteur,id_patient) VALUES(?, ?, ?, ?)");
+    $insertmbr->execute(array($date,$heure,$docteur,$id_patient));
+  } catch(PDOException $e) {
+    $e->getMessage();
+  }}$conn = null;
+    ?>
+<div class="form">
+    <div class="tab-content">
+      <div id="signup">   
+        <h1>Choisir votre rendez-vous</h1>
+        <form action="" method="POST">
+          <div class="field-wrap">
+          <label class="coucou">
+              ‎ ‎ Date:<span class="req">* ‎‏‏‎‎</span>
+              
+            </label>
+            <br><br><br>
+            <input style="height: 10%" type="date" name="date">
+          </div>
+          
+          <div class="field-wrap">
+            <label class="coucou">
+              ‎ ‎ Heure:<span class="req">* ‎‏‏‎‎</span>
+            </label>
+            <br><br><br>
+            <input style="height: 10%" type="time" name="heure">
+          </div>
         </div>
-
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
-          <div class="form-row">
-            <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-4 form-group">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <select name="department" id="department" class="form-control">
-                <option value="">Select Department</option>
-                <option value="Department 1">Department 1</option>
-                <option value="Department 2">Department 2</option>
-                <option value="Department 3">Department 3</option>
-              </select>
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <select name="doctor" id="doctor" class="form-control">
-                <option value="">Select Doctor</option>
-                <option value="Doctor 1">Doctor 1</option>
-                <option value="Doctor 2">Doctor 2</option>
-                <option value="Doctor 3">Doctor 3</option>
-              </select>
-              <div class="validate"></div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-            <div class="validate"></div>
-          </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Make an Appointment</button></div>
+        <div class="field-wrap">
+            <label class="doudou">
+              ‎ ‎ Spécialité:<span class="req">* ‎‏‏‎ ‎‏‏‎‎</span>
+            </label>
+            <br><br><br>
+            <select style="height: 10%" name="docteur">
+<?php
+ for($i=1;$i<500;$i++){if(isset($_SESSION[$i])){  
+echo ' <option value=';echo $_SESSION[$i];echo'>';
+echo $_SESSION[$i];
+echo "</option>";}}
+?>
+</select>
+          </div>   
+          <div class="g-recaptcha"name="g-recaptcha"id="g-recaptcha" data-sitekey="6Lc-EP4ZAAAAABLB6PneVYk0RWUIVHglRo8Ay9K6" ></div>      
+        <button type="submit" class="button button-block" name="forminscription" value="register">confirmer</button>
         </form>
-
+</div>
       </div>
     </section><!-- End Appointment Section -->
 

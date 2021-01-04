@@ -1,3 +1,18 @@
+<?php
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=yana', 'root', '');    
+   for($i=1;$i<500;$i++){  
+    if (isset($_POST[$i])){
+     $specialite =htmlspecialchars($_POST['changement']);
+     $sql = "UPDATE specialite SET specialite='$specialite' WHERE id='$i'";
+     $stmt = $bdd->prepare($sql);
+     $stmt->execute();header("Location:specialites.php");
+    }$ch='a'.$i;
+    if (isset($_POST[$ch])){
+        $sql = "DELETE FROM specialite WHERE id='$i'";
+        $stmt = $bdd->prepare($sql);
+        $stmt->execute();header("Location:specialites.php");
+       }} 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,10 +25,12 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
+		<link href="style.css" rel="stylesheet">
+
+	</head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">BACK END YANA</a>
+            <a class="navbar-brand" href="index.php">BACK END YANA</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -30,7 +47,7 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     
-                        <a class="dropdown-item" href="../views/connexion.php">Logout</a>
+                        <a class="dropdown-item" href="../views/logout.php">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -41,9 +58,14 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link" href="specialites.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Spécialités
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -64,10 +86,21 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Blog
                             </a>
-                            <a class="nav-link" href="../views/afficherPatient.php">
+                            <a class="nav-link" href="enregistrements.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
+                                Les enregistrements des RDV
                             </a>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                               
+                                Tables
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../views/afficherPatient.php">Table Patients</a>
+                                    <a class="nav-link" href="../views/afficherMedecin.php">Tables Medecins</a>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -79,75 +112,38 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Spécialtés</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Clients</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="../views/afficherPatient.php">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Medecins</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Rendez-vous</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-black stretched-link" href="https://analytics.google.com/analytics/web/?utm_source=marketingplatform.google.com&utm_medium=et&utm_campaign=marketingplatform.google.com%2Fabout%2Fanalytics%2F#/p256166109/reports/defaulthome?params=_u..nav%3Ddefault%26_r.0..selmet%3D%5B%22activeUsers%22%5D%26_r.0..cardDateRange%3Dtoday">Trafic</a>
-                                        <div class="small text-black"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar mr-1"></i>
-                                        Les Rendez-vous
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; YANA 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+                            <li class="breadcrumb-item active"></li>
+                        <?php
+                        $bdd = new PDO('mysql:host=127.0.0.1;dbname=yana', 'root', '');
+if (isset($_POST['ajouter'])){
+    
+  $specialite =htmlspecialchars($_POST['specialite']);
+
+  try {
+    
+    $insertmbr = $bdd->prepare("INSERT INTO specialite(specialite) VALUES(?)");
+    $insertmbr->execute(array($specialite));
+  } catch(PDOException $e) {
+    $e->getMessage();
+  }}
+  try {
+  $req= $bdd->prepare("SELECT * FROM specialite");
+  $req->execute();
+  $result = $req->fetchAll();
+  }catch(PDOException $e) {echo '<h1>';echo $e->getMessage();echo '</h1>';}echo'<div style="text-align:center">'; echo '<h1 style="text-align:center">';
+  foreach ($result as $row) {
+      $ch='<form action="" method="POST">'.$row['specialite'].'<br>'.'<input style="height: 10%" name="changement"><button type="submit" class="button button-block" name='.$row['id'].' value="register">Modifier</button><button type="submit" class="button button-block" name=a'.$row['id'].' value="register">Supprimer</button><br></form>';
+   echo $ch;
+
+} echo ' <form action="" method="POST">
+<label class="doudou">
+‎ ‎ Spécialité:</label><input style="height:5%" name="specialite"><br>
+
+<button type="submit" class="button button-block" name="ajouter" value="register">Ajouter</button>
+</form>';
+echo '</h1></div>';?>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 03, 2021 at 07:08 PM
+-- Generation Time: Jan 04, 2021 at 09:42 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -59,16 +59,37 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   PRIMARY KEY (`id`),
   KEY `id_post` (`id_post`),
   KEY `id_patient` (`id_patient`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `commentaire`
 --
 
 INSERT INTO `commentaire` (`id`, `nom`, `comment`, `date_com`, `id_patient`, `id_post`) VALUES
+(19, 'wassim', 'Hello', '2021-01-04 09:30:05', 3, 35),
 (18, 'behija', 'Merci wassim!', '2021-01-03 19:54:30', 1, 35),
 (17, 'wassim', 'Merci cher administrateur.', '2021-01-03 19:46:13', 1, 35),
 (16, 'admin', 'Bravo wassim!', '2021-01-03 19:45:40', 1, 35);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `enregistrements`
+--
+
+DROP TABLE IF EXISTS `enregistrements`;
+CREATE TABLE IF NOT EXISTS `enregistrements` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lien` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `enregistrements`
+--
+
+INSERT INTO `enregistrements` (`id`, `lien`) VALUES
+(14, 'https://drive.google.com/file/d/1SmHwoxa202TI5gg7-YEmCqCzmGDbG8fZ/preview');
 
 -- --------------------------------------------------------
 
@@ -184,15 +205,43 @@ CREATE TABLE IF NOT EXISTS `reclamation` (
 
 DROP TABLE IF EXISTS `rendezvous`;
 CREATE TABLE IF NOT EXISTS `rendezvous` (
-  `id_rendezvous` int(11) NOT NULL AUTO_INCREMENT,
-  `date_rendezvous` date NOT NULL,
-  `heure_rendezvous` int(2) NOT NULL,
-  `id_patient` int(11) NOT NULL,
-  `id_doctor` int(11) NOT NULL,
-  PRIMARY KEY (`id_rendezvous`),
-  KEY `FK_RDV_id_patient` (`id_patient`),
-  KEY `FK_RDV_id_doctor` (`id_doctor`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `heure` time NOT NULL,
+  `docteur` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=117 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialite`
+--
+
+DROP TABLE IF EXISTS `specialite`;
+CREATE TABLE IF NOT EXISTS `specialite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `specialite` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `specialite`
+--
+
+INSERT INTO `specialite` (`id`, `specialite`) VALUES
+(67, 'Sexologue'),
+(2, 'Psychiatre'),
+(3, 'Psychologue'),
+(4, 'Psychanalyste'),
+(5, 'Pédopsychiatre'),
+(6, 'Neuropsychiatre'),
+(7, 'Psychomotricien'),
+(8, 'Hypnothérapeute'),
+(9, 'Psychothérapeute'),
+(10, 'Psychopédagogue');
 
 -- --------------------------------------------------------
 
@@ -206,6 +255,13 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
   `hash` varchar(255) NOT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subscribe`
+--
+
+INSERT INTO `subscribe` (`email`, `hash`) VALUES
+('wassimbenr@gmail.com', '09642b17565872e384927451c09c576a');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

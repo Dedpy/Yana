@@ -70,12 +70,7 @@
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="views/developement_p.html">Development Personelle</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="views/blog_all.html">Blog</a></li>
-          <li><a href="#doctors">Doctors</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li class="active"><a href="home.php">Home</a></li>
         </ul>
       </nav><!-- .nav-menu -->
       <a href="views/inscription.html" class="appointment-btn scrollto">Inscription</a>

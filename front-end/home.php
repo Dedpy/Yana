@@ -559,7 +559,7 @@
         <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
         <li><i class="bx bx-chevron-right"></i> <a href="forum.php">Blog</a></li>
         <li><i class="bx bx-chevron-right"></i> <a href="#doctors">Doctors</a></li>
-        <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
+        <li><i class="bx bx-chevron-right"></i> <a href="main.php">Reclamation</a></li>
       </ul>
       </div>
 

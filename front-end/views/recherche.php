@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>YANA</title>
+  <title>YANA </title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -23,11 +23,11 @@
   <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/owl.carousel/../assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/style1.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Medilab - v2.0.0
@@ -36,7 +36,9 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+
 <body>
+
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
@@ -54,22 +56,30 @@
       </div>
     </div>
   </div>
+
+  
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
+<div class="container d-flex align-items-center">
+  <h6>Bienvenue <?php echo $_SESSION['login']; ?>!</h6>
+    <a href="modifierPatient.php?id=<?PHP echo $_SESSION['id']; ?>" class="appointment-btn scrollto"> Modifier </a>
+    <a href="logout.php" class="appointment-btn scrollto">Déconnexion</a>
+</div>
     <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="index.html">YANA</h1>
+    <h1 class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"><a href="../index.php">YANA</h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="home.php" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="../index.html">Home</a></li>
-          <li><a href="developement_p.html">Development Personelle</a></li>
-          <li><a href="#services">Services</a></li>
+          <li class="active"><a href="../index.php">Home</a></li>
           <li><a href="forum.php">Blog</a></li>
-          <li><a href="#doctors">Doctors</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="mesconsultations.php">Mes consultations</a></li>
+          <li><a href="../develo-per.php">Developement Personelles</a></li>
+          <li><a href="../index.php#appointment">Planifier un RDV</a></li>
         </ul>
       </nav><!-- .nav-menu -->
+
     </div>
   </header><!-- End Header -->
   <section id="hero" class="d-flex align-items-center">
@@ -213,7 +223,7 @@
 	  <div class="col-lg-2 col-md-6 footer-links">
 		<h4>Useful Links</h4>
 		<ul>
-		<li><i class="bx bx-chevron-right"></i> <a href="../index.html">Home</a></li>
+		<li><i class="bx bx-chevron-right"></i> <a href="../home.php">Home</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="developement_p.html">Development Personelle</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
 		<li><i class="bx bx-chevron-right"></i> <a href="forum.php">Blog</a></li>

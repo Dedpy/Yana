@@ -23,7 +23,6 @@ foreach ($result as $row) {
   if(isset($row['id'])){
 $_SESSION[$i]=$row['specialite'];}}}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +35,8 @@ $_SESSION[$i]=$row['specialite'];}}}
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/logo.png" rel="icon">
+  <link href="../assets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -88,22 +87,20 @@ $_SESSION[$i]=$row['specialite'];}}}
   <header id="header" class="fixed-top">
 <div class="container d-flex align-items-center">
   <h6>Bienvenue <?php echo $_SESSION['login']; ?>!</h6>
-    <a href="views/modifierPatient.php?id=<?PHP echo $_SESSION['id']; ?>" class="appointment-btn scrollto"> Modifier </a>
-    <a href="views/logout.php" class="appointment-btn scrollto">Déconnexion</a>
+    <a href="modifierPatient.php?id=<?PHP echo $_SESSION['id']; ?>" class="appointment-btn scrollto"> Modifier </a>
+    <a href="logout.php" class="appointment-btn scrollto">Déconnexion</a>
 </div>
     <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="index.php">YANA</h1>
+    <h1 class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"><a href="../index.php">YANA</h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="home.php" class="logo mr-auto"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="../index.php">Home</a></li>
           <li><a href="forum.php">Blog</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="mesconsultations.php">Mes consumltations</a></li>
-          <li><a href="#doctors">Doctors</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="mesconsultations.php">Mes consultations</a></li>
+          <li><a href="../develo-per.php">Developement Personelles</a></li>
           <li><a href="../index.php#appointment">Planifier un RDV</a></li>
         </ul>
       </nav><!-- .nav-menu -->

@@ -141,7 +141,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Traffic de notre site</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="https://analytics.google.com/analytics/web/?utm_source=marketingplatform.google.com&utm_medium=et&utm_campaign=marketingplatform.google.com%2Fabout%2Fanalytics%2F#/p256166109/reports/defaulthome?params=_u..nav%3Ddefault%26_r.0..selmet%3D%5B%22activeUsers%22%5D%26_r.0..cardDateRange%3Dtoday">View Details</a>
+                                        <a class="small text-white stretched-link" href="https://analytics.google.com/analytics/web/?utm_source=marketingplatform.google.com&utm_medium=et&utm_campaign=marketingplatform.google.com%2Fabout%2Fanalytics%2F#/p257721229/reports/defaulthome?params=_u..nav%3Ddefault%26_r.0..selmet%3D%5B%22activeUsers%22%5D%26_r.0..cardDateRange%3Dlast7">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

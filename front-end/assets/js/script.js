@@ -7,4 +7,5 @@ function verif() {
         alert("Veuillez indiquer une categorie");
         window.location.reload();
     }
+    
 }

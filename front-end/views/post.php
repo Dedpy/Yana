@@ -106,7 +106,7 @@
 							<div class="col-lg-10">
 								<div class="contact-form">
 									<h3><i class="fa fa-envelope-o"></i>Poster</h3>
-									<form name="formulaire" onsubmit="verif()" action="ajouter-post.php" method="POST">
+									<form name="formulaire" action="ajouter-post.php" onsubmit="verif()" method="POST">
 									<div class="row">
 										<div class="col-lg-12">
 												<div class="checkout-form-list">
@@ -219,6 +219,7 @@
 
 <!-- Template Main JS File -->
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/script.js"></script>
 
 </body>
 

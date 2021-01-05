@@ -116,7 +116,7 @@
 										<div class="col-lg-12">
 												<div class="checkout-form-list">
 													<input type="text"  name="titre" id="titre"  placeholder="Titre" />
-													<input name="id_client"  type="hidden" value="admin" />
+													<input name="id_client"  type="hidden" value="00" />
 											</div>
 										</div>
 										

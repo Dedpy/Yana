@@ -1,3 +1,25 @@
+<?php
+
+$conn = mysqli_connect("localhost","root","","yana");
+if ($conn) {
+	echo "connected";
+}
+
+	 	if(isset($_POST['subbb'])){
+            $idconsultation=$_POST['idconsultation'];
+            $desconsultation=$_POST['desconsultation'];
+            $idrenddevous=$_POST['idrendevous'];
+           
+	$sql = "INSERT INTO `hitorique_consultation`(`id_historique_consultation`, `description_consultation`, `id_rendezvous`) VALUES  ('$idconsultation','$desconsultation','$idrenddevous')";
+	$qry= mysqli_query($conn, $sql);
+	if ($qry) {
+		echo "image uploaded" ;
+	}
+}
+	$result= $conn->query('SELECT * FROM hitorique_consultation') or die ($mysqli->error);
+	
+	//pre_r ($result);
+	?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +35,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="../dist/index.php">BACK END YANA</a>
+            <a class="navbar-brand" href="index.php">BACK END YANA</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -41,7 +63,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../dist/index.php">
+                            <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -58,7 +80,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="crud.php">Histotrrique des rendez vous</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                                 </nav>
                             </div>
@@ -92,68 +114,105 @@
                     </div>
                 </nav>
             </div>
-			<div id="layoutSidenav_content">
-			<div class="shop-main-area">
-				<!-- cart-main-area-start -->
-				<?php include_once '../controller/ForumM.php';
-						$rec=new ForumManage();
-							    			$result=$rec->recupererPost($_GET['id']); ?>
-				<div class="cart-main-area">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-10">
-								<div class="contact-form">
-									<h3><i class="fa fa-envelope-o"></i>Poster</h3>
-									<?php foreach ($result as $row) { ?>
-									<form  action="modifier-post1.php" method="POST">
-									<div class="row">
-										<div class="col-lg-12">
-												<div class="checkout-form-list">
-													<input type="text"  name="titre"  value="<?php echo $row['titre']; ?>" placeholder="Titre" />
-													<input name="id_client"  type="hidden" value="1" />
-													<input name="id_post"  type="hidden" value="<?php echo $_GET['id']; ?>" />
-											</div>
-										</div>
-										
-									<div class="col-lg-12 ">
-											<div class="country-select">
-												
-												<select name="categorie" class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
-													
-													<option value="<?php echo $row['categorie']; ?>"><?php echo $row['categorie']; ?></option>
-													
+            <div id="layoutSidenav_content">
+<div class="container">
+<div class="row justify-content-center"> 
+						 <table class="table">
+							 <thead>
+								 <tr>
+									 <th>id consultation </th>
+									 <th>description consultation</th>
+									 <th>id rendez vous</th>
+									 <th colspan="2">action</th>
+								 </tr>
+							 </thead>
+							 
 
-												</select>
-											</div>
 
-									</div>
-								
 
-									
-									<div class="col-lg-12 ">
-											<div class="checkout-form-list">
-										
-											<textarea  cols="130" rows="4"  name="msg" placeholder="<?php echo $row['post']; ?>" value="<?php echo $row['post']; ?>"></textarea>
-									</div>
-										
-									</div>	
-									</div>
-									<div class="single-register">
-											<input class="confirmer" type="submit" value="Poster" >
-										
-									</div>
-									</form>
-									<?php } ?>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- cart-main-area-end -->
-			</div>
-				
-			</div>
-			<footer class="py-4 bg-light mt-auto">
+                    
+					
+                    <?php
+while ($row =$result->fetch_assoc()): 	
+ 
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <tr>
+	<td> <?php echo $row['id_historique_consultation']; 
+	 ?> </td>
+	
+
+	 <td> <?php echo $row['description_consultation']; 
+	 ?> </td>
+	 <td> <?php echo $row['id_rendezvous']; 
+	 ?> </td>
+		<td>
+		
+            <a href="crud.php?delete=<?php echo $row['id_historique_consultation'];?>" class="btn btn-danger">Delete </a>
+            <a href="index.php?edit=<?php echo $row['id_historique_consultation'];?>" class="btn btn-info">edit </a>
+
+
+			
+</td>
+	 </tr>
+
+
+<?php
+
+
+
+
+
+
+
+
+ endwhile;
+ if (isset($_GET['delete'])){
+	$id=$_GET['delete'];
+	$conn->query ("DELETE FROM hitorique_consultation WHERE id_historique_consultation=$id") or die($conn->error());
+}
+ function pre_r ($array) {
+	echo '<pre>' ;
+	print_r ($array);
+	echo '<pre>';
+} 
+
+if (isset($_GET['edit'])){
+}
+ ?>
+
+
+</table>
+                         </div>
+                    </div>
+                    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; YANA 2020</div>
@@ -163,6 +222,12 @@
                                 <a href="#">Terms &amp; Conditions</a>
                             </div>
                         </div>
+                        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <form>
+             <input type="button" value="Imprimer" onClick="window.print() ">
+          </form>
+
+          </div>
                     </div>
                 </footer>
             </div>
@@ -177,4 +242,55 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
     </body>
+</html>
+
+
+        
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>YANA</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
 </html>

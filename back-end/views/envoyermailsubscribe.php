@@ -53,5 +53,5 @@ $to      = $_POST['to'];
               } else {
                   echo "Email sending failed...";
               }
-//header('Location: page-confirm-mail.html');
+header('Location: page-confirm-mail.html');
 ?>

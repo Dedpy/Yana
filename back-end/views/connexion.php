@@ -14,7 +14,7 @@ if (isset($_POST['email'])){
                         if($count==1){
                             $user=$query->fetch(); 
                             $_SESSION['id'] = $user['id'];
-                            header('Location:../dist/index.php');
+                            header('Location:../dist/../dist/index.php');
                         }
                 }
                 catch (Exception $e){

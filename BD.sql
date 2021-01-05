@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 05, 2021 at 10:35 AM
+-- Generation Time: Jan 05, 2021 at 12:27 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -121,14 +121,19 @@ CREATE TABLE IF NOT EXISTS `medecin` (
   `adresse` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `medecin`
 --
 
 INSERT INTO `medecin` (`id`, `nom`, `prenom`, `diplome`, `adresse`, `email`) VALUES
-(2, 'amine', 'boubaker', 'psycologue', 'Rue Tahrir', 'amine.boubaker@esprit.tn');
+(2, 'Ben omor', 'Ahlem', 'medecin psychiatre', 'naser 1', 'benamorahlem@gmail.com'),
+(1, 'Ben salah', 'Mohamed', 'medecin psychiatre', 'manzah 5', 'mohamedbensalah@yahoo.fr'),
+(3, 'Ben njima', 'soufia', 'medecin psychiatre', 'manzah 6', 'soufiabenghorbel@gmail.com'),
+(4, 'Ben ghorbel', 'Imed', 'medecin psychiatre', 'naser 2', 'imedbenghorbel@gmail.com'),
+(6, 'halouani', 'maysa', 'medecin psychiatre', 'lac 2', 'maysahalouani@gmail.com'),
+(7, 'behija', 'ben mahmoud', 'medecin psychologue', 'marsa', 'behijabenmahoud@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -157,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
 INSERT INTO `patient` (`id`, `nom`, `prenom`, `date_naissance`, `telephone`, `email`, `login`, `password`, `code`) VALUES
 (3, 'wassim', 'benromdhane', '1998-01-09', 94366666, 'wassimbenr@gmail.com', 'wassim', 'wassim', NULL),
 (4, 'behija', 'benghorbel', '1999-01-11', 92582051, 'behija.benghorbel@esprit.tn', 'behija', 'behija', 5002),
-(0, 'admin', 'admin', '2021-01-01', 0, 'admin@esprit.tn', 'admin', 'admin', NULL);
+(0, 'admin', 'admin', '2021-01-01', 90000000, 'admin@esprit.tn', 'admin', 'admin', NULL);
 
 -- --------------------------------------------------------
 
@@ -176,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `id_patient` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_commentaire` (`id_patient`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `post`
@@ -185,8 +190,7 @@ CREATE TABLE IF NOT EXISTS `post` (
 INSERT INTO `post` (`id`, `titre`, `categorie`, `post`, `image`, `date_post`, `id_patient`) VALUES
 (35, 'Les psychologues en renforts nâ€™arriveront pas avant la fin janvier', 'Maladie mentale', 'Les renforts en santÃ© mentale tardent Ã  se dÃ©ployer au QuÃ©bec. Il faudra attendre Ã  la fin du mois de janvier avant que des psychologues du secteur privÃ© puissent sâ€™ajouter aux ressources existantes pour rÃ©duire les listes dâ€™attente.\r\nEn entrevue, le ministre dÃ©lÃ©guÃ© Ã  la SantÃ©, Lionel Carmant, a reconnu lundi que Â« câ€™est plus long Â» que ce quâ€™il Â« aurait souhaitÃ© Â».\r\nDeux jours aprÃ¨s lâ€™attaque de lâ€™Halloween dans le Vieux-QuÃ©bec, le ministre avait promis des investissements supplÃ©mentaires de 100 millions de dollars en santÃ© mentale. Le plan incluait lâ€™ajout de 350 sentinelles psychosociales en prÃ©vention et la mise Ã  contribution de 800 psychologues du secteur privÃ©.\r\nCes derniers, disait-il, allaient aider leurs collÃ¨gues du rÃ©seau public Ã  Â« vider les listes dâ€™attente Â» qui comptaient alors 16 000 noms.\r\nOr lors de lâ€™Ã©tude des crÃ©dits le 4 dÃ©cembre, le ministre a dÃ» concÃ©der que les renforts nâ€™arriveraient pas avant la fin du mois de janvier, et que le guichet dâ€™accÃ¨s contenait dÃ©sormais non plus 16 000, mais 18 300 noms.', '../assets/img/blog/general.png', '2021-01-03 19:44:16', 3),
 (36, 'Articles du mois', 'Developement personnel', 'SantÃ© publique France, agence dâ€™expertise scientifique, adopte de multiples canaux de diffusion des connaissances et, en particulier, celui des revues scientifiques internationales. Lâ€™agence publie chaque annÃ©e plus de 200 articles scientifiques, depuis des revues gÃ©nÃ©ralistes de santÃ© publique et de prÃ©vention et promotion de la santÃ©, jusquâ€™Ã  des revues spÃ©cialisÃ©es dans ses champs d\'intervention. Une diversitÃ© qui reflÃ¨te celle des missions de SantÃ© publique France Ã  savoir la veille et la surveillance, la prÃ©vention et la promotion de la santÃ©, et la rÃ©ponse aux alertes sanitaires.\r\n\r\nL\'excellence scientifique est un des 7 principes fondateurs de SantÃ© publique France. Chaque mois, un article est mis en avant que ce soit par les nouvelles connaissances quâ€™il apporte, pour son originalitÃ© ou encore pour son lien avec des questions dâ€™actualitÃ©.', 'img/blog/general.png', '2021-01-04 11:29:59', 0),
-(37, 'Wassim', 'Maladie mentale', 'Hello', 'img/blog/general.png', '2021-01-04 11:35:22', 0),
-(38, 'Sss', 'Depression', 'sdsdsd', 'img/blog/general.png', '2021-01-04 11:36:15', 0);
+(39, 'Quelles sont les diffÃ©rences entre les vaccins Moderna et Pfizer ?', 'Developement personnel', 'La vaccination a dÃ©butÃ© en France le 27 dÃ©cembre dernier, comme partout en Europe. Pour le moment, seuls sont concernÃ©s les rÃ©sidants des Ephad et les soignants Ã¢gÃ©s de plus de 50 ans. Selon le site CovidTracker, qui utilise les donnÃ©es du ministÃ¨re des SolidaritÃ©s et de la SantÃ© pour suivre la couverture vaccinale en France, 516 personnes ont reÃ§u la premiÃ¨re dose du vaccin Pfizer-BioNTech au 1er janvier 2021.\r\n\r\nLes autres firmes pharmaceutiques n\'arrÃªtent pas pour autant la conception de leur propre formule vaccinale. L\'AmÃ©ricain Moderna a publiÃ© les rÃ©sultats concernant l\'efficacitÃ© et la sÃ»retÃ© de son vaccin mRNA-1273 dans The New England Journal of Medicine le 30 dÃ©cembre 2020. Pfizer avait fait de mÃªme le 10 dÃ©cembre dernier.\r\n\r\nTout comme le vaccin BNT162b2, il est basÃ© sur la technologie innovante des ARN messagers (ARNm). Sur le papier, ces deux vaccins se ressemblent beaucoup mais voyons en dÃ©tail leurs points communs et leurs diffÃ©rences, selon les donnÃ©es publiÃ©es dans la littÃ©rature scientifique.', 'img/blog/general.png', '2021-01-05 13:24:32', 0);
 
 -- --------------------------------------------------------
 
@@ -223,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `reclamation` (
   `id_reclamation` int(11) NOT NULL AUTO_INCREMENT,
   `message_reclamation` varchar(250) NOT NULL,
   PRIMARY KEY (`id_reclamation`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reclamation`
@@ -234,7 +238,8 @@ INSERT INTO `reclamation` (`id_reclamation`, `message_reclamation`) VALUES
 (2, 'qsd'),
 (3, 'qsd'),
 (4, ''),
-(5, 'az');
+(5, 'az'),
+(6, 'aze');
 
 -- --------------------------------------------------------
 

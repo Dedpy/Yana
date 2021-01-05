@@ -2,6 +2,10 @@
    
      require "../../front-end/config.php";
 
+     include_once '../Model/patient.php';
+     require('../config.php');
+     session_start();
+ 
 $to      = $_POST['to'];
 
  $db = config::getConnexion();
@@ -12,8 +16,8 @@ $to      = $_POST['to'];
 
 
  $link = 'http://localhost/ProjetWeb2A28/front-end/views/unsubscribe.php?key='.$hash; //change your domain here.
- $strSubject="YANA | Newsletter";
- $header='Content-type: text/html; charset=iso-8859-1 From :dedsec1450@esprit.tn';
+ $sujet="YANA | Newsletter";
+ $headers='Content-type: text/html; charset=iso-8859-1 From :dedsec1450@esprit.tn';
      
         $message = '<html>
                   <body>
@@ -45,13 +49,21 @@ $to      = $_POST['to'];
                   </body>
                 </html>';
               
-                $body = "Hi,nn This is test email send by PHP Script";
-                $headers = "From: sender\'s email";
+                $email1="behijabenghorbel@gmail.com";    
+                $message =" Bonjour $login voici votre code de verification $code " ;
+                $headers = 'From: ' .$email1 . "\r\n".'Reply-To: ' . $email1. "\r\n".'X-Mailer: PHP/' . phpversion();
+                if (mail($to, $sujet, $message, $headers)) {
+                    echo "Email envoyé avec succès à $to ...";
+                } 
+                else {
+                     echo "Échec de l'envoi de l'email...";
+                }
+                header('Location: page-confirm-mail.html');
+            }
+    }
+  catch (Exception $e){
+    die('Erreur: '.$e->getMessage());
+        }
+    } 
 
-                if (mail($to, $strSubject, $message, $headers)) {
-                  echo "Email successfully sent to $to...";
-              } else {
-                  echo "Email sending failed...";
-              }
-header('Location: page-confirm-mail.html');
 ?>
